@@ -4,6 +4,8 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class DayNightCycle : MonoBehaviour
 {
+    public delegate void OnTimeChange(float percentageThroughDay);
+    public OnTimeChange onTimeChange;
     [SerializeField] private Light2D globalLight;
     public float cycleDuration;
     private float ellapsedDuration;
@@ -50,6 +52,7 @@ public class DayNightCycle : MonoBehaviour
         float t = ellapsedDuration/cycleDuration;
 
         globalLight.intensity = Mathf.Clamp01(Mathf.Lerp(startVal, endVal, t));
+        onTimeChange?.Invoke(becomingDay ? t / 2 + 0.5f : t / 2);
         // Color startColor = becomingDay ? Color.black : Color.white;
         // Color endColor = becomingDay ? Color.white : Color.black;
 

@@ -1,0 +1,34 @@
+{
+    "name": "InputActions",
+    "maps": [
+        {
+            "name": "Keyboard/Mouse",
+            "id": "f8734812-ef5a-4c21-a382-1f8641b36d1a",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "b6c93949-a4ad-4585-b69c-3cffef1d9cc4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b94fa0ea-1555-416f-9b4e-b5dc73eef5de",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

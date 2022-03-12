@@ -7,6 +7,7 @@ public class CharacterAnimationController : MonoBehaviour
     [SerializeField]public MovementController movementController;
     [SerializeField] public Transform lightRotator;
     public SpriteRenderer spriteRenderer;
+    private float rotation;
     private float horizontalInput;
     private float verticalInput;
     private float timeCounter;
@@ -22,6 +23,8 @@ public class CharacterAnimationController : MonoBehaviour
 
     private void Update()
     {
+        rotation = lightRotator.rotation.eulerAngles.z -180;
+        Debug.Log(rotation);
         horizontalInput = movementController.horizontalInput;
         verticalInput = movementController.verticalInput;
 
@@ -33,5 +36,18 @@ public class CharacterAnimationController : MonoBehaviour
         if (horizontalInput > 0 && verticalInput < 0) { spriteRenderer.sprite = seSpriteArray[0];}
         if (horizontalInput < 0 && verticalInput > 0) { spriteRenderer.sprite = nwSpriteArray[0];}
         if (horizontalInput < 0 && verticalInput < 0) { spriteRenderer.sprite = swSpriteArray[0];}
+        if (horizontalInput > -0.5 && horizontalInput < 0.5 && verticalInput > -0.5 && verticalInput < 0.5)
+        {
+            if (rotation < 22.6 && rotation > -22.5) { spriteRenderer.sprite = sSpriteArray[0]; }
+            else if (rotation < -22.6 && rotation > -67.5) { spriteRenderer.sprite = swSpriteArray[0]; }
+            else if (rotation < -67.6 && rotation > -112.5) { spriteRenderer.sprite = wSpriteArray[0]; }
+            else if (rotation < -112.6 && rotation > -157.5) { spriteRenderer.sprite = nwSpriteArray[0]; }
+
+            else if (rotation < 67.5  && rotation > 22.6) { spriteRenderer.sprite = seSpriteArray[0]; }
+            else if (rotation <  112.5 && rotation > 67.6) { spriteRenderer.sprite = eSpriteArray[0]; }
+            else if (rotation < 157.5 && rotation > 112.6) { spriteRenderer.sprite = neSpriteArray[0]; }
+            else { spriteRenderer.sprite = nSpriteArray[0]; }
+
+        }
     }
 }

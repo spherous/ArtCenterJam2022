@@ -1231,6 +1231,11 @@ MonoBehaviour:
   horizontalInput: 0
   verticalInput: 0
   timeToMaxSpeed: 0.333
+  dashCooldown: 0
+  dashTime: 1
+  dashRate: 0.15
+  dashCooldownTimer: 3
+  dashSpeed: 7
 --- !u!114 &860441664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1288,6 +1293,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 88763ba3-23a8-403a-9b20-c7fc80da8d64
     m_ActionName: Keyboard/Mouse/Horizontal[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 860441663}
+        m_TargetAssemblyTypeName: MovementController, Assembly-CSharp
+        m_MethodName: Dash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ce72c3ab-3a43-47b8-900f-833940da569c
+    m_ActionName: Keyboard/Mouse/Dash[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Keyboard/Mouse

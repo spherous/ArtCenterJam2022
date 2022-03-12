@@ -2463,7 +2463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: Style
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: Player
@@ -2474,8 +2474,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
+      propertyPath: SpiralSpeedY
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: SpiralAmplitutde
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
+      propertyPath: SpiralAmplitutdeX
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
+      propertyPath: SpiralAmplitutdeY
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111039, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: m_Name

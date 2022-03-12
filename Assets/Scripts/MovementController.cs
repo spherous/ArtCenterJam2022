@@ -13,14 +13,15 @@ public class MovementController : MonoBehaviour
     private float velocityX;
     private float velocityY;
     public float dashCooldown;
-    public float dashTime;
+    private float dashTime;
     public float dashRate;
-    public float dashCooldownTimer;
+    private float dashCooldownTimer;
     private bool dashed;
     public float dashSpeed;
 
     private void Awake()
     {
+        speedMax = maxSpeed;
         dashCooldownTimer = Time.timeSinceLevelLoad + dashCooldown;
         dashTime = Time.timeSinceLevelLoad + dashRate;
 
@@ -30,7 +31,7 @@ public class MovementController : MonoBehaviour
         if (dashed)
         {
             if (Time.timeSinceLevelLoad >= dashTime){ maxSpeed = speedMax;}
-            if (Time.timeSinceLevelLoad >= dashCooldownTimer) { dashed = false;}
+            if (Time.timeSinceLevelLoad >= dashCooldownTimer) { dashed = false; }
         }
         float acceleration = maxSpeed / timeToMaxSpeed; 
         if (horizontalInput > 0)
@@ -97,7 +98,6 @@ public class MovementController : MonoBehaviour
             if(dashed) { return; }
             speedMax = maxSpeed;
             maxSpeed = maxSpeed * dashSpeed;
-            Debug.Log("uwu");
             rb.AddForce(rb.velocity.normalized * dashSpeed, ForceMode2D.Impulse);
             dashed = true;
             dashCooldownTimer = Time.timeSinceLevelLoad + dashCooldown;

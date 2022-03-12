@@ -2010,10 +2010,8 @@ MonoBehaviour:
   horizontalInput: 0
   verticalInput: 0
   timeToMaxSpeed: 0.333
-  dashCooldown: 0
-  dashTime: 1
+  dashCooldown: 1
   dashRate: 0.15
-  dashCooldownTimer: 3
   dashSpeed: 7
 --- !u!50 &952221616
 Rigidbody2D:

@@ -764,10 +764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emotionDotPrefab: {fileID: 7887779644887532000, guid: 89727df736fadb34f967bb98c81ac496, type: 3}
-  player: {fileID: 860441660}
-  playerMovementController: {fileID: 860441663}
-  playerLanternLight: {fileID: 1101906470}
-  playerRotator: {fileID: 125577477}
+  player: {fileID: 860441665}
   postProcessingVolume: {fileID: 1758345363}
   smoothnessMinMax: {x: 0.293, y: 0.587}
   intensityMinMax: {x: 0.378, y: 0.881}
@@ -1250,6 +1247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903c7453b3490eb41adc0ce5b7012928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementController: {fileID: 860441663}
+  lanternLight: {fileID: 1101906470}
+  rotator: {fileID: 125577477}
 --- !u!1 &882814397
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,14 +6,11 @@ using UnityEngine.InputSystem;
 public class EnemyDetect : MonoBehaviour
 {
     public Transform player;
+    public float arc = 45;
+    public int rays = 5;
+    public int distance = 5;
+
     [SerializeField] Vector2 direction;
-    [SerializeField] float fRotation;
-    Mouse mouse => Mouse.current;
-    Camera cam;
-    private void Awake()
-    {
-        cam = Camera.main;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -24,23 +21,6 @@ public class EnemyDetect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 playerScreenPosition = cam.WorldToScreenPoint(player.position);
-        //Vector2 direction = (mouse.position.ReadValue() - (Vector2)playerScreenPosition).normalized;
-        
-
-        fRotation = player.rotation.z * Mathf.Deg2Rad;
-        float fX = Mathf.Sin(fRotation);
-        float fY = Mathf.Cos(fRotation);
-        direction = new Vector2(fY, fX).normalized;
-
-        //Vector2 directionFromPlayerToMouse = (mouse.position.ReadValue() - (Vector2)player.position).normalized;
-
-        //Debug.DrawLine(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.yellow, 1.0f, false);
-        //Debug.DrawLine(player.position + Vector3.right * 2, transform.TransformDirection(Vector3.forward) * 5, Color.blue, 1.0f, false);
-        //Debug.DrawLine(player.position + Vector3.right * 2, directionFromPlayerToMouse, Color.white, 1.0f, false);
-        Debug.DrawLine(player.position, ((Vector2)player.position + (direction * 5)), Color.white);
-
-        //Debug.Log(transform.position);
     }
 
     void FixedUpdate()
@@ -53,17 +33,30 @@ public class EnemyDetect : MonoBehaviour
         layerMask = ~layerMask;
 
 
-        RaycastHit hit;
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        for (int ray = 0; ray < rays; ray++)
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log("Did Hit");
+            direction = (Vector2)player.transform.up;
+            Vector2 fan = Quaternion.Euler(0, 0, (float)(ray - ((float)rays / 2.0f)) * (arc / rays)) * direction;
+
+            //Debug.DrawLine(player.position, ((Vector2)player.position + (fan * distance)), Color.blue);
+            //Debug.DrawRay(player.position, fan * 5, Color.blue);
+
+            RaycastHit hit;
+            // Does the ray intersect any objects excluding the player layer
+            if (Physics.Raycast(player.position, fan, out hit, distance, layerMask))
+            {
+                var script = hit.transform.GetComponent<Enemy>();
+                if(script != null) ((Enemy)script).LightAccumulation++;
+
+                Debug.DrawRay(player.position, fan * hit.distance, Color.yellow);
+                //Debug.Log("Did Hit");
+            }
+            else
+            {
+                Debug.DrawRay(player.position, fan * distance, Color.white);
+            }
+
         }
-        else
-        {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            Debug.Log("Did not Hit");
-        }
+
     }
 }

@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public enum EnemyStyle {
         FollowPlayer,
+        RunFromPlayer,
         Spiral
     }
 
@@ -14,6 +15,9 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float SpiralSpeed;
     public float SpiralAmplitutde;
+
+    public int LightAccumulation = 0;
+    public int LightThreshold = 100;
 
     private Vector3 inital_position;
 
@@ -37,6 +41,13 @@ public class Enemy : MonoBehaviour
             case EnemyStyle.FollowPlayer:
                 move = direction * -speed * Time.deltaTime;
                 transform.position += move;
+                if (LightAccumulation > LightThreshold) Style = EnemyStyle.RunFromPlayer;
+                break;
+            case EnemyStyle.RunFromPlayer:
+                move = direction * speed * Time.deltaTime;
+                transform.position += move;
+                LightAccumulation--;
+                if (LightAccumulation < 0) Style = EnemyStyle.FollowPlayer;
                 break;
             case EnemyStyle.Spiral:
                 float amp = SpiralAmplitutde; // * direction.magnitude;

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5856142505213111037}
   - component: {fileID: 5856142505213111036}
   - component: {fileID: 9026212529743401973}
+  - component: {fileID: 4492215799836797428}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -96,8 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8bb0f32f3dd00f4a9a8806a86184619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Style: 0
   Player: {fileID: 0}
   speed: 1
+  SpiralSpeed: 0
+  SpiralAmplitutde: 0
 --- !u!114 &9026212529743401973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +114,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a013b609e366644abcadee2e1f6648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 0
   targetTransform: {fileID: 0}
   selfTransform: {fileID: 5856142505213111026}
   isPlayer: 0
+--- !u!65 &4492215799836797428
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5856142505213111039}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.8828125, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}

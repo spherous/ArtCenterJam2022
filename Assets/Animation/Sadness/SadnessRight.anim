@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerLeft
+  m_Name: SadnessRight
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,12 +20,18 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 507919264788268553, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+      value: {fileID: -433374674214396243, guid: 2145d428c3064444a9e2a849675a046d, type: 3}
+    - time: 0.2
+      value: {fileID: 2061717958276017296, guid: 2145d428c3064444a9e2a849675a046d, type: 3}
+    - time: 0.4
+      value: {fileID: 1256478217687381588, guid: 2145d428c3064444a9e2a849675a046d, type: 3}
+    - time: 0.6
+      value: {fileID: -292237507058475059, guid: 2145d428c3064444a9e2a849675a046d, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 60
+  m_SampleRate: 5
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -40,13 +46,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 507919264788268553, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+    - {fileID: -433374674214396243, guid: 2145d428c3064444a9e2a849675a046d, type: 3}
+    - {fileID: 2061717958276017296, guid: 2145d428c3064444a9e2a849675a046d, type: 3}
+    - {fileID: 1256478217687381588, guid: 2145d428c3064444a9e2a849675a046d, type: 3}
+    - {fileID: -292237507058475059, guid: 2145d428c3064444a9e2a849675a046d, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.016666668
+    m_StopTime: 0.8
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

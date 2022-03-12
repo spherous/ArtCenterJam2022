@@ -39,19 +39,22 @@ public class EnemyDetect : MonoBehaviour
             Vector2 fan = Quaternion.Euler(0, 0, (float)(ray - ((float)rays / 2.0f)) * (arc / rays)) * direction;
 
             //Debug.DrawLine(player.position, ((Vector2)player.position + (fan * distance)), Color.blue);
-            Debug.DrawRay(player.position, fan * 5, Color.blue);
+            //Debug.DrawRay(player.position, fan * 5, Color.blue);
 
             RaycastHit hit;
             // Does the ray intersect any objects excluding the player layer
-            if (Physics.Raycast(player.position, fan, out hit, Mathf.Infinity, layerMask))
+            if (Physics.Raycast(player.position, fan, out hit, distance, layerMask))
             {
+                var script = hit.transform.GetComponent<Enemy>();
+                ((Enemy)script).speed = 0;
+                ((Enemy)script).SpiralSpeed = 0;
+
                 Debug.DrawRay(player.position, fan * hit.distance, Color.yellow);
                 Debug.Log("Did Hit");
             }
             else
             {
-                Debug.DrawRay(player.position, fan * 1000, Color.white);
-                Debug.Log("Did not Hit");
+                Debug.DrawRay(player.position, fan * distance, Color.white);
             }
 
         }

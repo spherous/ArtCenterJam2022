@@ -9,15 +9,12 @@ public class MovementController : MonoBehaviour
     public float horizontalInput;
     public float verticalInput;
     public float timeToMaxSpeed;
-    private float acceleration; 
     private float velocityX;
     private float velocityY;
-    private void Awake()
-    {
-        acceleration = maxSpeed / timeToMaxSpeed;
-    }
+
     private void Update()
     {
+        float acceleration = maxSpeed / timeToMaxSpeed; 
         if (horizontalInput > 0)
         {
             velocityX += acceleration * Time.deltaTime;

@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7887779645367707856}
+  positive: {fileID: 2100000, guid: cda4de61ce1feb445b82f6f2780c762e, type: 2}
+  negative: {fileID: 2100000, guid: 6246ab9e70b144041ab65766ddd7b694, type: 2}
   distance: 1
 --- !u!1 &7887779645367707857
 GameObject:
@@ -96,7 +98,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: cda4de61ce1feb445b82f6f2780c762e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

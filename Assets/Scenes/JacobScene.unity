@@ -134,8 +134,9 @@ GameObject:
   - component: {fileID: 23792074}
   - component: {fileID: 23792073}
   - component: {fileID: 23792072}
+  - component: {fileID: 23792075}
   m_Layer: 0
-  m_Name: Player-sprite-sheet_0
+  m_Name: Player Sprite Sheet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,6 +226,20 @@ Transform:
   m_Father: {fileID: 860441660}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &23792075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23792071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca1a1ef752f5974fac1f4fd6cf454e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 23792072}
+  movementController: {fileID: 860441663}
 --- !u!1001 &28694822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -938,6 +953,7 @@ MonoBehaviour:
   emotionDots: []
   maximumEmotionalBaggage: -20
   emotionSpawnSpeed: 1
+  spawnRandomEmotions: 0
 --- !u!4 &626010295
 Transform:
   m_ObjectHideFlags: 0

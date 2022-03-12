@@ -292,6 +292,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
+      propertyPath: Style
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 860441660}
@@ -1460,6 +1464,9 @@ MonoBehaviour:
   horizontalInput: 0
   verticalInput: 0
   timeToMaxSpeed: 0.333
+  dashCooldown: 0
+  dashRate: 0
+  dashSpeed: 0
 --- !u!114 &860441664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1698,8 +1705,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 125577474}
+  arc: 10
+  rays: 5
+  distance: 5
   direction: {x: 0, y: 0}
-  fRotation: 0
 --- !u!1 &994519171
 GameObject:
   m_ObjectHideFlags: 0

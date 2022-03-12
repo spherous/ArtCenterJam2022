@@ -59,7 +59,6 @@ public class ScreenShake : MonoBehaviour
             shakeCount = 0; 
             ReturnToPos();
             origPosSet = false;
-            Debug.Log("reset");  
             return; }
         else { waiting = true;}
 

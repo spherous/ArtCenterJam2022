@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     private void Update() {
         if(Time.timeSinceLevelLoad >= spawnEmotionAtTime)
         {
-            EmotionDot dot = Instantiate(emotionDotPrefab, Player.position, Quaternion.identity);
+            EmotionDot dot = Instantiate(emotionDotPrefab, Player.position, Quaternion.identity, Player);
             dot.target = Player;
             dot.emotion = GetRandomEmotion();
             spawnEmotionAtTime = Time.timeSinceLevelLoad + emotionSpawnSpeed;

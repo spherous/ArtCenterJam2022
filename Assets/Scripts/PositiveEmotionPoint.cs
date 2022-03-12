@@ -22,6 +22,7 @@ public class PositiveEmotionPoint : MonoBehaviour
     private ProgressBar progressBar;
 
     private void Awake() {
+        canvas = FindObjectOfType<Canvas>().GetComponent<RectTransform>();
         gameManager = FindObjectOfType<GameManager>();
         Color emotionColor = emotion.GetColor();
         circle.color = new Color(emotionColor.r, emotionColor.g, emotionColor.b, circle.color.a);

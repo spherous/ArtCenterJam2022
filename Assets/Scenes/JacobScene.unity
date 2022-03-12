@@ -1705,8 +1705,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 125577474}
-  arc: 10
-  rays: 5
+  arc: 45
+  rays: 15
   distance: 5
   direction: {x: 0, y: 0}
 --- !u!1 &994519171

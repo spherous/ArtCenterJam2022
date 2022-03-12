@@ -32,26 +32,29 @@ public class EnemyDetect : MonoBehaviour
         // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
         layerMask = ~layerMask;
 
-        direction = (Vector2)player.transform.up;
 
         for (int ray = 0; ray < rays; ray++)
         {
+            direction = (Vector2)player.transform.up;
             Vector2 fan = Quaternion.Euler(0, 0, (float)(ray - ((float)rays / 2.0f)) * (arc / rays)) * direction;
-            Debug.DrawLine(player.position, ((Vector2)player.position + (fan * distance)), Color.white);
+
+            //Debug.DrawLine(player.position, ((Vector2)player.position + (fan * distance)), Color.blue);
+            Debug.DrawRay(player.position, fan * 5, Color.blue);
+
+            RaycastHit hit;
+            // Does the ray intersect any objects excluding the player layer
+            if (Physics.Raycast(player.position, fan, out hit, Mathf.Infinity, layerMask))
+            {
+                Debug.DrawRay(player.position, fan * hit.distance, Color.yellow);
+                Debug.Log("Did Hit");
+            }
+            else
+            {
+                Debug.DrawRay(player.position, fan * 1000, Color.white);
+                Debug.Log("Did not Hit");
+            }
+
         }
 
-
-        RaycastHit hit;
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
-        {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log("Did Hit");
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            Debug.Log("Did not Hit");
-        }
     }
 }

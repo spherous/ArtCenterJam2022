@@ -10,14 +10,16 @@ public class PositiveEmotionPoint : MonoBehaviour
     private GameManager gameManager;
     [SerializeField] private SpriteRenderer circle;
     [SerializeField] private CircleCollider2D circleCollider;
+    [SerializeField] private RectTransform canvas;
     public float activationRadius;
     public float activationDelay;
     private float? ellapsedActivationTime;
     public float cooldownDuration;
     private float? offcooldownAtTime;
     public Emotion emotion;
+    public ProgressBar progressBarPrefab;
 
-    private bool playerInRadius;
+    private ProgressBar progressBar;
 
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
@@ -42,6 +44,7 @@ public class PositiveEmotionPoint : MonoBehaviour
 
     private void CompleteEmotional()
     {
+        progressBar?.Kill();
         gameManager.Emotional(emotion);
         ellapsedActivationTime = null;
         StartCooldown();
@@ -66,11 +69,16 @@ public class PositiveEmotionPoint : MonoBehaviour
     {
         Debug.Log("Enter");
         if(!offcooldownAtTime.HasValue || Time.timeSinceLevelLoad >= offcooldownAtTime.Value)
+        {
+            progressBar = Instantiate(progressBarPrefab, canvas.transform);
+            progressBar.TrackProgress(this);
             ellapsedActivationTime = 0;
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         Debug.Log("Exit");
         ellapsedActivationTime = null;
+        progressBar?.Kill();
     }
 }

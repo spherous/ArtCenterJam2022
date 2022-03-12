@@ -48,10 +48,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circle: {fileID: 2867641391045807742}
   circleCollider: {fileID: 2867641391045807743}
+  canvas: {fileID: 0}
   activationRadius: 6
   activationDelay: 1
   cooldownDuration: 5
   emotion: 5
+  progressBarPrefab: {fileID: 2710689733336505426, guid: 8a11b4c2a24e5a04a95adc11365e86d8, type: 3}
 --- !u!50 &2867641389701327853
 Rigidbody2D:
   serializedVersion: 4
@@ -124,7 +126,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e432eebaab7d6154080311b36f8be0c2, type: 2}
+  - {fileID: 2100000, guid: e5842ef278a886540898ea0cf7073a1f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

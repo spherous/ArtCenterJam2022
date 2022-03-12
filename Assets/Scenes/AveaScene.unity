@@ -208,10 +208,8 @@ GameObject:
   m_Component:
   - component: {fileID: 125577474}
   - component: {fileID: 125577475}
+  - component: {fileID: 125577480}
   - component: {fileID: 125577476}
-  - component: {fileID: 125577477}
-  - component: {fileID: 125577479}
-  - component: {fileID: 125577478}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -228,7 +226,7 @@ Transform:
   m_GameObject: {fileID: 125577473}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.666, y: 1.666, z: 1.666}
   m_Children:
   - {fileID: 994519173}
   - {fileID: 1101906469}
@@ -275,7 +273,7 @@ SpriteRenderer:
   m_SortingLayerID: -1169862427
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: -4231049110989657701, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -286,8 +284,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &125577476
-BoxCollider2D:
+--- !u!70 &125577476
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -299,20 +297,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &125577477
+  m_Offset: {x: 0, y: 0.023561478}
+  m_Size: {x: 1.54, y: 2.481461}
+  m_Direction: 0
+--- !u!114 &125577480
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,46 +309,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 125577473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4a013b609e366644abcadee2e1f6648, type: 3}
+  m_Script: {fileID: 11500000, guid: ff3c0f61667c0d249a4dd84c4cd4f3ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 120
-  targetTransform: {fileID: 0}
-  selfTransform: {fileID: 860441660}
-  isPlayer: 1
---- !u!95 &125577478
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125577473}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 31447c7d2f89023458e5578880aa5c73, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &125577479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125577473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fca1a1ef752f5974fac1f4fd6cf454e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 125577478}
   movementController: {fileID: 860441663}
+  lightRotator: {fileID: 1101906469}
+  spriteRenderer: {fileID: 125577475}
+  animationFPS: 0
+  nSpriteArray:
+  - {fileID: -7466069876368927371, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  sSpriteArray:
+  - {fileID: -4231049110989657701, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  eSpriteArray:
+  - {fileID: -3004440036116213242, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  wSpriteArray:
+  - {fileID: 507919264788268553, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  neSpriteArray:
+  - {fileID: 6271278542525949802, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  seSpriteArray:
+  - {fileID: 2206057479902246086, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  swSpriteArray:
+  - {fileID: -6715998170981264839, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  nwSpriteArray:
+  - {fileID: 7382708736271802583, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
 --- !u!1001 &189440555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1279,7 +1250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementController: {fileID: 860441663}
   lanternLight: {fileID: 1101906470}
-  rotator: {fileID: 125577477}
+  rotator: {fileID: 1101906471}
 --- !u!1 &882814397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,6 +1620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101906469}
   - component: {fileID: 1101906470}
+  - component: {fileID: 1101906471}
   m_Layer: 0
   m_Name: Lantern Light
   m_TagString: Untagged
@@ -1711,6 +1683,22 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &1101906471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101906468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a013b609e366644abcadee2e1f6648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 120
+  targetTransform: {fileID: 0}
+  selfTransform: {fileID: 860441660}
+  isPlayer: 1
 --- !u!1001 &1180643541
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -18,9 +18,13 @@ public class Player : MonoBehaviour
         lanternLight.pointLightOuterRadius = Mathf.Lerp(4, 20, Mathf.Abs(Mathf.Clamp(joySadnessBalance, -10, 10) + 10) / 20);
 
         float angerLoveBalance = emotionDots.Where(emo => emo.emotion == Emotion.Anger || emo.emotion == Emotion.Love).Sum(emo => emo.emotion.IsPositive() ? 1 : -1);
-        movementController.maxSpeed = Mathf.Lerp(1, 9, Mathf.Abs(Mathf.Clamp(angerLoveBalance, -10, 10) + 10) / 20);
+        float angerLoveT = Mathf.Abs(Mathf.Clamp(angerLoveBalance, -10, 10) + 10) / 20;
+        movementController.maxSpeed = Mathf.Lerp(1, 9, angerLoveT);
+        movementController.dashSpeed = Mathf.Lerp(3, 10, angerLoveT);
         
         float fearPeaceBalance = emotionDots.Where(emo => emo.emotion == Emotion.Fear || emo.emotion == Emotion.Peace).Sum(emo => emo.emotion.IsPositive() ? 1 : -1);
-        rotator.rotationSpeed = Mathf.Lerp(26, 270, Mathf.Abs(Mathf.Clamp(fearPeaceBalance, -10, 10) + 10) / 20);
+        float fearPeaceT = Mathf.Abs(Mathf.Clamp(fearPeaceBalance, -10, 10) + 10) / 20;
+        rotator.rotationSpeed = Mathf.Lerp(26, 270, fearPeaceT);
+        movementController.dashCooldown = Mathf.Lerp(5f, 1.5f, fearPeaceT);
     }
 }

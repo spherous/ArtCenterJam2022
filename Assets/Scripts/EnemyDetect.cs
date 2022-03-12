@@ -1,9 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EnemyDetect : MonoBehaviour
 {
+    public Transform player;
+    [SerializeField] Vector2 direction;
+    [SerializeField] float fRotation;
+    Mouse mouse => Mouse.current;
+    Camera cam;
+    private void Awake()
+    {
+        cam = Camera.main;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,8 +24,21 @@ public class EnemyDetect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawLine(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.yellow, 1.0f, false);
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 5, Color.blue, 1.0f, false);
+        Vector3 playerScreenPosition = cam.WorldToScreenPoint(player.position);
+        //Vector2 direction = (mouse.position.ReadValue() - (Vector2)playerScreenPosition).normalized;
+        
+
+        fRotation = player.rotation.z * Mathf.Deg2Rad;
+        float fX = Mathf.Sin(fRotation);
+        float fY = Mathf.Cos(fRotation);
+        direction = new Vector2(fY, fX).normalized;
+
+        //Vector2 directionFromPlayerToMouse = (mouse.position.ReadValue() - (Vector2)player.position).normalized;
+
+        //Debug.DrawLine(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.yellow, 1.0f, false);
+        //Debug.DrawLine(player.position + Vector3.right * 2, transform.TransformDirection(Vector3.forward) * 5, Color.blue, 1.0f, false);
+        //Debug.DrawLine(player.position + Vector3.right * 2, directionFromPlayerToMouse, Color.white, 1.0f, false);
+        Debug.DrawLine(player.position, ((Vector2)player.position + (direction * 5)), Color.white);
 
         //Debug.Log(transform.position);
     }

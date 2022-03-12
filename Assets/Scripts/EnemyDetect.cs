@@ -46,11 +46,10 @@ public class EnemyDetect : MonoBehaviour
             if (Physics.Raycast(player.position, fan, out hit, distance, layerMask))
             {
                 var script = hit.transform.GetComponent<Enemy>();
-                ((Enemy)script).speed = 0;
-                ((Enemy)script).SpiralSpeed = 0;
+                if(script != null) ((Enemy)script).LightAccumulation++;
 
                 Debug.DrawRay(player.position, fan * hit.distance, Color.yellow);
-                Debug.Log("Did Hit");
+                //Debug.Log("Did Hit");
             }
             else
             {

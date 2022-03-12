@@ -7,10 +7,14 @@ using Emotions;
 public class EmotionDot : MonoBehaviour
 {   
     [SerializeField] private SpriteRenderer spriteRenderer;
+    public Material positive;
+    public Material negative;
     private Emotion _emotion;
     public Emotion emotion {get => _emotion; set {
         _emotion = value;
+        spriteRenderer.sortingOrder = (int)value;
         spriteRenderer.color = value.GetColor();
+        spriteRenderer.material = value.IsPositive() ? positive : negative;
         speed = value.GetSpeed() + Random.Range(-8f, 8f);
     }}
 

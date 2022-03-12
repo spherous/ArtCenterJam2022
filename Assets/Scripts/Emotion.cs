@@ -26,8 +26,7 @@ namespace Emotions
             _ => 0f
         };
 
-        public static Emotion GetRandomEmotion() => (Emotion)Random.Range(1, 7);
-
+        public static Emotion GetRandomEmotion() => (Emotion)Random.Range(1, 4);
         public static bool IsPositive(this Emotion emotion) => emotion >= Emotion.Peace;
     }
 }

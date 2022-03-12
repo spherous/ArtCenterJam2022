@@ -6,14 +6,32 @@ public class MovementController : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
     public float maxSpeed;
+    private float speedMax;
     public float horizontalInput;
     public float verticalInput;
     public float timeToMaxSpeed;
     private float velocityX;
     private float velocityY;
+    public float dashCooldown;
+    public float dashTime;
+    public float dashRate;
+    public float dashCooldownTimer;
+    private bool dashed;
+    public float dashSpeed;
 
+    private void Awake()
+    {
+        dashCooldownTimer = Time.timeSinceLevelLoad + dashCooldown;
+        dashTime = Time.timeSinceLevelLoad + dashRate;
+
+    }
     private void Update()
     {
+        if (dashed)
+        {
+            if (Time.timeSinceLevelLoad >= dashTime){ maxSpeed = speedMax;}
+            if (Time.timeSinceLevelLoad >= dashCooldownTimer) { dashed = false;}
+        }
         float acceleration = maxSpeed / timeToMaxSpeed; 
         if (horizontalInput > 0)
         {
@@ -71,4 +89,21 @@ public class MovementController : MonoBehaviour
     {
         verticalInput = context.ReadValue<float>();
     }
+    public void Dash(CallbackContext context)
+    {
+        
+        if (context.started)
+        {
+            if(dashed) { return; }
+            speedMax = maxSpeed;
+            maxSpeed = maxSpeed * dashSpeed;
+            Debug.Log("uwu");
+            rb.AddForce(rb.velocity.normalized * dashSpeed, ForceMode2D.Impulse);
+            dashed = true;
+            dashCooldownTimer = Time.timeSinceLevelLoad + dashCooldown;
+            dashTime = Time.timeSinceLevelLoad + dashRate;
+        }
+
+    }
+
 }

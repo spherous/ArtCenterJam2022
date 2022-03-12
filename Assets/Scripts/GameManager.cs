@@ -26,13 +26,15 @@ public class GameManager : MonoBehaviour
     public float emotionSpawnSpeed;
     private float spawnEmotionAtTime;
 
+    public bool spawnRandomEmotions;
+
     private void Awake() {
         spawnEmotionAtTime = Time.timeSinceLevelLoad + emotionSpawnSpeed;
         UpdateNewEmotionEffects();
     }
 
     private void Update() {
-        if(Time.timeSinceLevelLoad >= spawnEmotionAtTime)
+        if(spawnRandomEmotions && Time.timeSinceLevelLoad >= spawnEmotionAtTime)
         {
             EmotionDot dot = Instantiate(emotionDotPrefab, player.transform.position, Quaternion.identity, player.transform);
             emotionDots.Add(dot);
@@ -41,6 +43,15 @@ public class GameManager : MonoBehaviour
             spawnEmotionAtTime = Time.timeSinceLevelLoad + emotionSpawnSpeed;
             UpdateNewEmotionEffects();
         }
+    }
+
+    public void Emotional(Emotion emotion)
+    {
+        EmotionDot dot = Instantiate(emotionDotPrefab, player.transform.position, Quaternion.identity, player.transform);
+        emotionDots.Add(dot);
+        dot.target = player.transform;
+        dot.emotion = emotion;
+        UpdateNewEmotionEffects();
     }
 
     private void UpdateNewEmotionEffects()

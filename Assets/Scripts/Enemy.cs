@@ -26,10 +26,10 @@ public class Enemy : MonoBehaviour
     public float SpiralAmplitutdeX;
     public float SpiralAmplitutdeY;
 
-    public int LightAccumulation = 0;
-    public int LightThreshold = 100;
-    public int LightClamp = 200;
-
+    private int _lightaccumulation;
+    public int LightAccumulation {get => _lightaccumulation; set{
+        _lightaccumulation = value * enemyAnimation.lightMultiplier;
+    }}
     private float theta = 0;
 
     private Vector3 inital_position;
@@ -84,9 +84,9 @@ public class Enemy : MonoBehaviour
         Vector3 direction = Vector3.Normalize(transform.position - Player.position);
 
 
-        if (LightAccumulation > LightClamp) LightAccumulation = LightClamp;
+        if (LightAccumulation > enemyAnimation.maxLight) LightAccumulation = enemyAnimation.maxLight;
         if (LightAccumulation > 0)
-            LightAccumulation--;
+            LightAccumulation -= enemyAnimation.lightRecoverySpeed;
 
         switch (Style)
         {
@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour
             case EnemyMovement.FollowPlayer:
                 move = direction * -enemyAnimation.moveSpeed * Time.deltaTime;
                 transform.position += move;
-                if (LightAccumulation > LightThreshold) Style = EnemyMovement.RunFromPlayer;
+                if (LightAccumulation > enemyAnimation.lightThreshold) Style = EnemyMovement.RunFromPlayer;
                 velocity = (move).normalized;
                 break;
             case EnemyMovement.RunFromPlayer:
@@ -121,7 +121,7 @@ public class Enemy : MonoBehaviour
                 theta += Time.deltaTime;
                 move = new Vector2(SpiralAmplitutdeX * Mathf.Sin(theta * SpiralSpeedX), SpiralAmplitutdeY * Mathf.Cos(theta * SpiralSpeedY));
                 transform.position = inital_position + move;
-                if (LightAccumulation > LightThreshold) Style = EnemyMovement.SpiralWait;
+                if (LightAccumulation > enemyAnimation.lightThreshold) Style = EnemyMovement.SpiralWait;
                 velocity = (move - move_last).normalized;
                 break;
             case EnemyMovement.SpiralWait:
@@ -142,11 +142,11 @@ public class Enemy : MonoBehaviour
                     {
                         case EnemyMovement.FollowPlayer:
                             Style = EnemyMovement.RunFromPlayer;
-                            LightAccumulation = LightClamp;
+                            LightAccumulation = enemyAnimation.maxLight;
                             break;
                         case EnemyMovement.Spiral:
                             Style = EnemyMovement.SpiralWait;
-                            LightAccumulation = LightClamp;
+                            LightAccumulation = enemyAnimation.maxLight;
                             break;
                     }
                 }

@@ -120,6 +120,10 @@ MonoBehaviour:
   player: {fileID: 0}
   attackCooldown: 0.75
   moveSpeed: 5
+  maxLight: 7000
+  lightMultiplier: 10
+  lightThreshold: 1200
+  lightRecoverySpeed: 5
 --- !u!82 &4655708807339986855
 AudioSource:
   m_ObjectHideFlags: 0

@@ -13,8 +13,10 @@ public class Enemy : MonoBehaviour
 
     public enum EnemyMovement
     {
+        FollowStart,
         FollowPlayer,
         RunFromPlayer,
+        SpiralStart,
         Spiral,
         SpiralWait
     }
@@ -83,6 +85,10 @@ public class Enemy : MonoBehaviour
 
         switch (Style)
         {
+            case EnemyMovement.FollowStart:
+                if ((transform.position - Player.position).magnitude < 20)
+                    Style = EnemyMovement.FollowPlayer;
+                break;
             case EnemyMovement.FollowPlayer:
                 move = direction * -Speed * Time.deltaTime;
                 transform.position += move;
@@ -96,6 +102,10 @@ public class Enemy : MonoBehaviour
                 velocity = (move).normalized;
                 break;
 
+            case EnemyMovement.SpiralStart:
+                if ((transform.position - Player.position).magnitude < 20)
+                    Style = EnemyMovement.Spiral;
+                break;
             case EnemyMovement.Spiral:
                 theta += Time.deltaTime;
                 move = new Vector2(SpiralAmplitutdeX * Mathf.Sin(theta * SpiralSpeedX), SpiralAmplitutdeY * Mathf.Cos(theta * SpiralSpeedY));
@@ -109,6 +119,7 @@ public class Enemy : MonoBehaviour
         }
         Debug.DrawLine(transform.position, Player.position, Color.red);
 
+        // Attack
         if ((transform.position - Player.position).magnitude < 4)
         {
             enemyAnimation.Attack(true);

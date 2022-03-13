@@ -1110,6 +1110,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7648157573626652051, guid: 22cfabad625138c44adbb3d99c819fd8, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22cfabad625138c44adbb3d99c819fd8, type: 3}
 --- !u!4 &61251315 stripped
@@ -3601,6 +3605,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken Slide
       objectReference: {fileID: 0}
+    - target: {fileID: 9155068007443713801, guid: 44b6f74306942574480819ccd2158f57, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b6f74306942574480819ccd2158f57, type: 3}
 --- !u!1001 &192685105
@@ -5096,6 +5104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tether Ball (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5967099420292276483, guid: 54912fbe05a7cc345998033061c7c447, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54912fbe05a7cc345998033061c7c447, type: 3}
 --- !u!4 &293683868 stripped
@@ -5989,6 +6001,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7558796818166430209, guid: 4f57ad14635c7254a9f7264af1a36528, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f57ad14635c7254a9f7264af1a36528, type: 3}
 --- !u!4 &352795743 stripped
@@ -6198,6 +6214,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7648157573626652051, guid: 22cfabad625138c44adbb3d99c819fd8, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     - target: {fileID: 7648157573626652051, guid: 22cfabad625138c44adbb3d99c819fd8, type: 3}
       propertyPath: emotion
       value: 2
@@ -9335,6 +9355,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6699181503515891267, guid: 1735cc63f4a12d344a36e9b16447eada, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
+    - target: {fileID: 6699181503515891267, guid: 1735cc63f4a12d344a36e9b16447eada, type: 3}
       propertyPath: activationRadius
       value: 28
       objectReference: {fileID: 0}
@@ -10439,6 +10463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PositiveEmotionPoint (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2867641389701327855, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     - target: {fileID: 2867641389701327855, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
       propertyPath: emotion
       value: 4
@@ -11808,6 +11836,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PositiveEmotionPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2867641389701327855, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     - target: {fileID: 2867641389701327855, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
       propertyPath: emotion
       value: 6
@@ -16135,6 +16167,10 @@ PrefabInstance:
       value: PositiveEmotionPoint (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2867641389701327855, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
+    - target: {fileID: 2867641389701327855, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
       propertyPath: emotion
       value: 6
       objectReference: {fileID: 0}
@@ -18239,6 +18275,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocking Horse (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1115362012309939672, guid: 23ce7cb17c791fb44be801d96a72e2b1, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23ce7cb17c791fb44be801d96a72e2b1, type: 3}
 --- !u!1001 &988333954
@@ -18296,6 +18336,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PositiveEmotionPoint (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2867641389701327855, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     - target: {fileID: 2867641389701327855, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
       propertyPath: emotion
       value: 4
@@ -20057,6 +20101,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tether Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 5967099420292276483, guid: 54912fbe05a7cc345998033061c7c447, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54912fbe05a7cc345998033061c7c447, type: 3}
 --- !u!1001 &1089961020
@@ -21908,6 +21956,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7648157573626652051, guid: 22cfabad625138c44adbb3d99c819fd8, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22cfabad625138c44adbb3d99c819fd8, type: 3}
 --- !u!1 &1184627002
@@ -27610,6 +27662,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7558796818166430209, guid: 4f57ad14635c7254a9f7264af1a36528, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
+    - target: {fileID: 7558796818166430209, guid: 4f57ad14635c7254a9f7264af1a36528, type: 3}
       propertyPath: emotion
       value: 5
       objectReference: {fileID: 0}
@@ -28527,6 +28583,10 @@ PrefabInstance:
       value: Tether Ball (2)
       objectReference: {fileID: 0}
     - target: {fileID: 5967099420292276483, guid: 54912fbe05a7cc345998033061c7c447, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
+    - target: {fileID: 5967099420292276483, guid: 54912fbe05a7cc345998033061c7c447, type: 3}
       propertyPath: emotion
       value: 4
       objectReference: {fileID: 0}
@@ -28963,6 +29023,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7558796818166430209, guid: 4f57ad14635c7254a9f7264af1a36528, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f57ad14635c7254a9f7264af1a36528, type: 3}
 --- !u!4 &1617776578 stripped
@@ -29599,6 +29663,10 @@ PrefabInstance:
       value: PositiveEmotionPoint
       objectReference: {fileID: 0}
     - target: {fileID: 2867641389701327855, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
+    - target: {fileID: 2867641389701327855, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
       propertyPath: emotion
       value: 4
       objectReference: {fileID: 0}
@@ -30047,6 +30115,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7558796818166430209, guid: 4f57ad14635c7254a9f7264af1a36528, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f57ad14635c7254a9f7264af1a36528, type: 3}
 --- !u!1001 &1703254534
@@ -30264,6 +30336,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9152911301850807485, guid: b656a3ed3e781c34aa181feeeda7f958, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b656a3ed3e781c34aa181feeeda7f958, type: 3}
 --- !u!1001 &1708769607
@@ -30765,6 +30841,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken Slide (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9155068007443713801, guid: 44b6f74306942574480819ccd2158f57, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b6f74306942574480819ccd2158f57, type: 3}
 --- !u!1001 &1725988751
@@ -30774,6 +30854,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7544448475881918506, guid: 3e62283160521664daec1dc68dc01b4b, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     - target: {fileID: 8267370799382421397, guid: 3e62283160521664daec1dc68dc01b4b, type: 3}
       propertyPath: m_Name
       value: Four Square
@@ -31621,6 +31705,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9152911301850807485, guid: b656a3ed3e781c34aa181feeeda7f958, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b656a3ed3e781c34aa181feeeda7f958, type: 3}
 --- !u!4 &1784750973 stripped
@@ -31864,6 +31952,10 @@ PrefabInstance:
       value: 6.57
       objectReference: {fileID: 0}
     - target: {fileID: 7544448475881918506, guid: 3e62283160521664daec1dc68dc01b4b, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
+    - target: {fileID: 7544448475881918506, guid: 3e62283160521664daec1dc68dc01b4b, type: 3}
       propertyPath: emotion
       value: 1
       objectReference: {fileID: 0}
@@ -31984,6 +32076,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hop Skotch
       objectReference: {fileID: 0}
+    - target: {fileID: 6792646817412019805, guid: 80b84e31dae89f34488ec73a458dafb5, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80b84e31dae89f34488ec73a458dafb5, type: 3}
 --- !u!1001 &1810184374
@@ -32509,6 +32605,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6699181503515891267, guid: 1735cc63f4a12d344a36e9b16447eada, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     - target: {fileID: 7305796068386140001, guid: 1735cc63f4a12d344a36e9b16447eada, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -36444,6 +36544,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9152911301850807485, guid: b656a3ed3e781c34aa181feeeda7f958, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b656a3ed3e781c34aa181feeeda7f958, type: 3}
 --- !u!4 &2021827288 stripped
@@ -36506,6 +36610,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9152911301850807485, guid: b656a3ed3e781c34aa181feeeda7f958, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b656a3ed3e781c34aa181feeeda7f958, type: 3}
 --- !u!4 &2022846545 stripped
@@ -36568,6 +36676,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocking Horse
       objectReference: {fileID: 0}
+    - target: {fileID: 1115362012309939672, guid: 23ce7cb17c791fb44be801d96a72e2b1, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23ce7cb17c791fb44be801d96a72e2b1, type: 3}
 --- !u!1001 &2025194143
@@ -37315,6 +37427,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hop Skotch (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6792646817412019805, guid: 80b84e31dae89f34488ec73a458dafb5, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     - target: {fileID: 6792646817412019805, guid: 80b84e31dae89f34488ec73a458dafb5, type: 3}
       propertyPath: activationRadius
       value: 19
@@ -40546,6 +40662,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8444822888653507373, guid: 1a3a1d5efc2b85746a46a09112f9a3c4, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a3a1d5efc2b85746a46a09112f9a3c4, type: 3}
 --- !u!1001 &2733590456151282801
@@ -41744,6 +41864,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PositiveEmotionPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2867641389701327855, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1578367768}
     - target: {fileID: 2867641389701327855, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
       propertyPath: activationRadius
       value: 25

@@ -31,7 +31,7 @@ public class PositiveEmotionPoint : MonoBehaviour
     public float activeTransparency;
 
     private void Awake() {
-        canvas = FindObjectOfType<Canvas>().GetComponent<RectTransform>();
+        // canvas = FindObjectOfType<Canvas>().GetComponent<RectTransform>();
         gameManager = FindObjectOfType<GameManager>();
         Color emotionColor = emotion.GetColor();
         circle.color = new Color(emotionColor.r, emotionColor.g, emotionColor.b, activeTransparency/255f);
@@ -112,7 +112,10 @@ public class PositiveEmotionPoint : MonoBehaviour
         if(other.transform.root.gameObject.TryGetComponent<Player>(out Player player))
         {
             if(ellapsedActivationTime.HasValue && ellapsedActivationTime.Value < activationDelay)
+            {
+                audioSource.Stop();
                 audioSource.PlayOneShot(failSound);
+            }
             Debug.Log("Exit");
             ellapsedActivationTime = null;
             progressBar?.Kill();

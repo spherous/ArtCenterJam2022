@@ -1037,6 +1037,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 626010294}
+    - target: {fileID: 5856142505213111037, guid: fcc7977c985cc724484132879e75384d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111039, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: m_Name
       value: Enemy

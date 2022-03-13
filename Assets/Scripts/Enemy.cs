@@ -47,6 +47,16 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         inital_position = transform.position;
+        int children = transform.childCount;
+        for(int child = 0; child < transform.childCount; child++)
+        {
+            if( transform.GetChild(child).name == "Anger" )
+            {
+                //transform.GetChild(child).
+            }
+        }
+
+
     }
 
     // Update is called once per frame

@@ -13,6 +13,8 @@ public class CharacterAnimationController : MonoBehaviour
     private float verticalInput;
     private float timeCounter;
     public float animationFPS;
+    private int frame;
+    private int frameCount;
     public Sprite[] nSpriteArray;
     public Sprite[] sSpriteArray;
     public Sprite[] eSpriteArray;

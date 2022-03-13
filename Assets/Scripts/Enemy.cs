@@ -4,21 +4,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public enum EnemyType
-    {
-        Sadness,
-        Fear,
-        Anger
-    }
-
     public enum EnemyMovement
     {
+        FollowStart,
         FollowPlayer,
         RunFromPlayer,
+        SpiralStart,
         Spiral,
         SpiralWait
     }
-
 
     public Transform Player;
     public GameManager gameManager;
@@ -43,6 +37,7 @@ public class Enemy : MonoBehaviour
     private Vector3 move_last = Vector3.zero;
     private Transform animationObject;
     private EnemyAnimation enemyAnimation;
+    private AudioSource enemyAudioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -64,8 +59,13 @@ public class Enemy : MonoBehaviour
                 animationObject = transform.GetChild(child);
             }
         }
+        if (animationObject == null) {
+            Destroy(gameObject);
+                return;
+        }
         animationObject.gameObject.SetActive(true);
         enemyAnimation = animationObject.GetComponent<EnemyAnimation>();
+        enemyAudioSource = animationObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -83,6 +83,13 @@ public class Enemy : MonoBehaviour
 
         switch (Style)
         {
+            case EnemyMovement.FollowStart:
+                if ((transform.position - Player.position).magnitude < 20)
+                {
+                    Style = EnemyMovement.FollowPlayer;
+                    enemyAudioSource.Play();
+                }
+                break;
             case EnemyMovement.FollowPlayer:
                 move = direction * -Speed * Time.deltaTime;
                 transform.position += move;
@@ -96,6 +103,13 @@ public class Enemy : MonoBehaviour
                 velocity = (move).normalized;
                 break;
 
+            case EnemyMovement.SpiralStart:
+                if ((transform.position - Player.position).magnitude < 20)
+                {
+                    Style = EnemyMovement.FollowPlayer;
+                    enemyAudioSource.Play();
+                }
+                break;
             case EnemyMovement.Spiral:
                 theta += Time.deltaTime;
                 move = new Vector2(SpiralAmplitutdeX * Mathf.Sin(theta * SpiralSpeedX), SpiralAmplitutdeY * Mathf.Cos(theta * SpiralSpeedY));
@@ -107,8 +121,8 @@ public class Enemy : MonoBehaviour
                 if (LightAccumulation <= 0) Style = EnemyMovement.Spiral;
                 break;
         }
-        Debug.DrawLine(transform.position, Player.position, Color.red);
 
+        // Attack
         if ((transform.position - Player.position).magnitude < 4)
         {
             enemyAnimation.Attack(true);
@@ -131,6 +145,7 @@ public class Enemy : MonoBehaviour
         else
             enemyAnimation.Attack(false);
 
+        //Debug.DrawLine(transform.position, Player.position, Color.red);
         //Debug.DrawLine(transform.position, transform.position + velocity, Color.red);
         move_last = move;
     }

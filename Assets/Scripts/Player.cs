@@ -11,11 +11,13 @@ public class Player : MonoBehaviour
     [SerializeField] private MovementController movementController;
     [SerializeField] private Light2D lanternLight;
     [SerializeField] private LightRotationController rotator;
+    [SerializeField] private EnemyDetect enemyDetect;
 
     public void UpdateNewEmotionEffects(List<EmotionDot> emotionDots)
     {
         float joySadnessBalance = emotionDots.Where(emo => emo.emotion == Emotion.Joy || emo.emotion == Emotion.Sadness).Sum(emo => emo.emotion.IsPositive() ? 1 : -1);
         lanternLight.pointLightOuterRadius = Mathf.Lerp(4, 20, Mathf.Abs(Mathf.Clamp(joySadnessBalance, -10, 10) + 10) / 20);
+        if(enemyDetect != null) enemyDetect.distance = lanternLight.pointLightOuterRadius;
 
         float angerLoveBalance = emotionDots.Where(emo => emo.emotion == Emotion.Anger || emo.emotion == Emotion.Love).Sum(emo => emo.emotion.IsPositive() ? 1 : -1);
         float angerLoveT = Mathf.Abs(Mathf.Clamp(angerLoveBalance, -10, 10) + 10) / 20;

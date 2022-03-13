@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     public Transform Player;
     public GameManager gameManager;
 
-    public EnemyType enemyType;
+    public Emotions.Emotion enemyType;
     public EnemyMovement Style;
 
     public float Speed = 1;
@@ -51,15 +51,15 @@ public class Enemy : MonoBehaviour
         int children = transform.childCount;
         for(int child = 0; child < transform.childCount; child++)
         {
-            if (transform.GetChild(child).name == "Anger" && enemyType == EnemyType.Anger)
+            if (transform.GetChild(child).name == "Anger" && enemyType == Emotions.Emotion.Anger)
             {
                 animationObject = transform.GetChild(child);
             }
-            if (transform.GetChild(child).name == "Fear" && enemyType == EnemyType.Fear)
+            if (transform.GetChild(child).name == "Fear" && enemyType == Emotions.Emotion.Fear)
             {
                 animationObject = transform.GetChild(child);
             }
-            if (transform.GetChild(child).name == "Sadness" && enemyType == EnemyType.Sadness)
+            if (transform.GetChild(child).name == "Sadness" && enemyType == Emotions.Emotion.Sadness)
             {
                 animationObject = transform.GetChild(child);
             }
@@ -109,9 +109,24 @@ public class Enemy : MonoBehaviour
         }
         Debug.DrawLine(transform.position, Player.position, Color.red);
 
-        if ((transform.position - Player.position).magnitude < 3)
+        if ((transform.position - Player.position).magnitude < 4)
         {
             enemyAnimation.Attack(true);
+            if ((transform.position - Player.position).magnitude < 3)
+            {
+                gameManager.Emotional(enemyType);
+                switch(Style)
+                {
+                    case EnemyMovement.FollowPlayer:
+                        Style = EnemyMovement.RunFromPlayer;
+                        LightAccumulation = LightClamp;
+                        break;
+                    case EnemyMovement.Spiral:
+                        Style = EnemyMovement.SpiralWait;
+                        LightAccumulation = LightClamp;
+                        break;
+                }
+            }
         }
         else
             enemyAnimation.Attack(false);

@@ -4145,10 +4145,10 @@ MonoBehaviour:
   - {fileID: 3541298362619232001, guid: 73152a96da5f2714ba7c0a57f9331062, type: 3}
   neSpriteArray:
   - {fileID: 6271278542525949802, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8743486826579321458, guid: 3d4e5c7954d955d4a96bc5ec9c1f3ff5, type: 3}
+  - {fileID: 4044629782008459720, guid: 3d4e5c7954d955d4a96bc5ec9c1f3ff5, type: 3}
+  - {fileID: -4617048624128494498, guid: 3d4e5c7954d955d4a96bc5ec9c1f3ff5, type: 3}
+  - {fileID: 2581556858452665395, guid: 3d4e5c7954d955d4a96bc5ec9c1f3ff5, type: 3}
   seSpriteArray:
   - {fileID: 2206057479902246086, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
   - {fileID: -4888789238666291578, guid: 73152a96da5f2714ba7c0a57f9331062, type: 3}
@@ -4163,10 +4163,10 @@ MonoBehaviour:
   - {fileID: 6032162531565804148, guid: 73152a96da5f2714ba7c0a57f9331062, type: 3}
   nwSpriteArray:
   - {fileID: 7382708736271802583, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1662654519337322959, guid: 6788e30cdc2f2fe4aa5c3fc5e8bf94e2, type: 3}
+  - {fileID: 9029686863485488344, guid: 6788e30cdc2f2fe4aa5c3fc5e8bf94e2, type: 3}
+  - {fileID: -6167987557773884241, guid: 6788e30cdc2f2fe4aa5c3fc5e8bf94e2, type: 3}
+  - {fileID: 7519666989449035821, guid: 6788e30cdc2f2fe4aa5c3fc5e8bf94e2, type: 3}
 --- !u!212 &1946225709
 SpriteRenderer:
   m_ObjectHideFlags: 0

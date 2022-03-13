@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/AveaScene.unity
-    guid: 50153acd316debe46b7bbfda66122ee3
-  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: b955af01bcada1241b846eec092c2d11
   - enabled: 1

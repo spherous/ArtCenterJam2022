@@ -7,6 +7,8 @@ public class EnemyAnimation : MonoBehaviour
     public Animator animator;
     public Transform player;
 
+    public float attackCooldown;
+
     private Enemy enemy;
 
     // Start is called before the first frame update

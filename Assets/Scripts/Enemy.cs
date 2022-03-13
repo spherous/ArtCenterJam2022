@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
     private Transform animationObject;
     private EnemyAnimation enemyAnimation;
     private AudioSource enemyAudioSource;
+    private float attackCooldownTimer;
     
     private void Awake() {
         Player = GameObject.FindObjectOfType<Player>().transform;
@@ -71,6 +72,7 @@ public class Enemy : MonoBehaviour
         animationObject.gameObject.SetActive(true);
         enemyAnimation = animationObject.GetComponent<EnemyAnimation>();
         enemyAudioSource = animationObject.GetComponent<AudioSource>();
+        attackCooldownTimer = Time.timeSinceLevelLoad + enemyAnimation.attackCooldown;
     }
 
     // Update is called once per frame
@@ -128,27 +130,31 @@ public class Enemy : MonoBehaviour
         }
 
         // Attack
-        if ((transform.position - Player.position).magnitude < 4)
+        if(Time.timeSinceLevelLoad >= attackCooldownTimer)
         {
-            enemyAnimation.Attack(true);
-            if ((transform.position - Player.position).magnitude < 3)
+            if ((transform.position - Player.position).magnitude < 4)
             {
-                gameManager.Emotional(enemyType);
-                switch(Style)
+                enemyAnimation.Attack(true);
+                if ((transform.position - Player.position).magnitude < 3)
                 {
-                    case EnemyMovement.FollowPlayer:
-                        Style = EnemyMovement.RunFromPlayer;
-                        LightAccumulation = LightClamp;
-                        break;
-                    case EnemyMovement.Spiral:
-                        Style = EnemyMovement.SpiralWait;
-                        LightAccumulation = LightClamp;
-                        break;
+                    gameManager.Emotional(enemyType);
+                    switch(Style)
+                    {
+                        case EnemyMovement.FollowPlayer:
+                            Style = EnemyMovement.RunFromPlayer;
+                            LightAccumulation = LightClamp;
+                            break;
+                        case EnemyMovement.Spiral:
+                            Style = EnemyMovement.SpiralWait;
+                            LightAccumulation = LightClamp;
+                            break;
+                    }
                 }
             }
+            else
+                enemyAnimation.Attack(false);
+            attackCooldownTimer = Time.timeSinceLevelLoad + enemyAnimation.attackCooldown;
         }
-        else
-            enemyAnimation.Attack(false);
 
         //Debug.DrawLine(transform.position, Player.position, Color.red);
         //Debug.DrawLine(transform.position, transform.position + velocity, Color.red);

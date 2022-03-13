@@ -11,23 +11,22 @@ public class FootstepAudio : MonoBehaviour
     public bool isGrass;
     private int n;
 
-
     private void Awake()
     {
         isGrass = true;
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Concrete")
-        {
-            isGrass = false;
-        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Concrete")
         {
             isGrass = true;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Concrete")
+        {
+            isGrass = false;
         }
     }
     public void GroundType()

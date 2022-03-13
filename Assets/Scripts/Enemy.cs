@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public enum EnemyType
-    {
-        Sadness,
-        Fear,
-        Anger
-    }
-
     public enum EnemyMovement
     {
         FollowStart,
@@ -20,7 +13,6 @@ public class Enemy : MonoBehaviour
         Spiral,
         SpiralWait
     }
-
 
     public Transform Player;
     public GameManager gameManager;
@@ -45,6 +37,7 @@ public class Enemy : MonoBehaviour
     private Vector3 move_last = Vector3.zero;
     private Transform animationObject;
     private EnemyAnimation enemyAnimation;
+    private AudioSource enemyAudioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +61,7 @@ public class Enemy : MonoBehaviour
         }
         animationObject.gameObject.SetActive(true);
         enemyAnimation = animationObject.GetComponent<EnemyAnimation>();
+        enemyAudioSource = animationObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -87,7 +81,11 @@ public class Enemy : MonoBehaviour
         {
             case EnemyMovement.FollowStart:
                 if ((transform.position - Player.position).magnitude < 20)
+                {
                     Style = EnemyMovement.FollowPlayer;
+                    //enemyAudioSource.gameObject.SetActive(true);
+                    enemyAudioSource.Play();
+                }
                 break;
             case EnemyMovement.FollowPlayer:
                 move = direction * -Speed * Time.deltaTime;
@@ -104,7 +102,10 @@ public class Enemy : MonoBehaviour
 
             case EnemyMovement.SpiralStart:
                 if ((transform.position - Player.position).magnitude < 20)
-                    Style = EnemyMovement.Spiral;
+                {
+                    Style = EnemyMovement.FollowPlayer;
+                    enemyAudioSource.Play();
+                }
                 break;
             case EnemyMovement.Spiral:
                 theta += Time.deltaTime;

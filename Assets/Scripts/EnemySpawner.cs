@@ -26,7 +26,8 @@ public class EnemySpawner : MonoBehaviour
         {
             x = Random.Range(MinX, MaxX);
             y = Random.Range(MinY, MaxY);
-            Instantiate(enemyPrefab, new Vector3(x, y, 0), Quaternion.identity);
+            Transform t = Instantiate(enemyPrefab, new Vector3(x, y, 0), Quaternion.identity);
+            t.GetComponent<Enemy>().enemyType = (Emotions.Emotion) Random.Range(1, 4);
         }
 
     }

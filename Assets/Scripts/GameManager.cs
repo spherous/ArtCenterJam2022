@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EmotionDot emotionDotPrefab;
     [SerializeField] private Player player;
     [SerializeField] private Volume postProcessingVolume;
+    [SerializeField] private GameOverPanel gameOverPanel;
+    [SerializeField] private MovementController movementController;
 
     [MinMaxSlider(0, 1, true)] public Vector2 smoothnessMinMax;
     [MinMaxSlider(0, 1, true)] public Vector2 intensityMinMax;
@@ -28,12 +30,17 @@ public class GameManager : MonoBehaviour
 
     public bool spawnRandomEmotions;
 
+    public bool gameOver {get; private set;} = false;
+
     private void Awake() {
         spawnEmotionAtTime = Time.timeSinceLevelLoad + emotionSpawnSpeed;
         UpdateNewEmotionEffects();
     }
 
     private void Update() {
+        if(gameOver)
+            return;
+            
         if(spawnRandomEmotions && Time.timeSinceLevelLoad >= spawnEmotionAtTime)
         {
             EmotionDot dot = Instantiate(emotionDotPrefab, player.transform.position, Quaternion.identity, player.transform);
@@ -47,6 +54,9 @@ public class GameManager : MonoBehaviour
 
     public void Emotional(Emotion emotion)
     {
+        if(gameOver)
+            return;
+            
         EmotionDot dot = Instantiate(emotionDotPrefab, player.transform.position, Quaternion.identity, player.transform);
         emotionDots.Add(dot);
         dot.target = player.transform;
@@ -56,12 +66,15 @@ public class GameManager : MonoBehaviour
 
     private void UpdateNewEmotionEffects()
     {
+        if(gameOver)
+            return;
+
         float emotionalBaggage = emotionDots.Sum(emo => emo.emotion == Emotion.None ? 0 : emo.emotion.IsPositive() ? 1 : -1);
         float percentToLoss = Mathf.Abs(Mathf.Clamp(emotionalBaggage, maximumEmotionalBaggage, Mathf.Abs(maximumEmotionalBaggage)) + maximumEmotionalBaggage) / (Mathf.Abs(maximumEmotionalBaggage) * 2);
         Debug.Log($"Emotional baggage: {emotionalBaggage}");
 
         if(emotionalBaggage <= maximumEmotionalBaggage)
-            GameOver();
+            GameOver(EndGameStatus.Lose);
 
         if(postProcessingVolume.profile.TryGet(out Vignette vignette))
         {
@@ -72,8 +85,11 @@ public class GameManager : MonoBehaviour
         player.UpdateNewEmotionEffects(emotionDots);
     }
 
-    private void GameOver()
+    public void GameOver(EndGameStatus endGameStatus)
     {
+        gameOver = true;
+        movementController.SetVelocityToZero();
         Debug.Log("Game Over");
+        gameOverPanel.GameOver(endGameStatus);
     }
 }

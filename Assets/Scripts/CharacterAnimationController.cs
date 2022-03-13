@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CharacterAnimationController : MonoBehaviour
 {
-    [SerializeField]public MovementController movementController;
+    [SerializeField] public MovementController movementController;
+    [SerializeField] public LightRotationController lrc;
     [SerializeField] public Transform lightRotator;
     public SpriteRenderer spriteRenderer;
     private float rotation;
@@ -27,24 +28,49 @@ public class CharacterAnimationController : MonoBehaviour
         horizontalInput = movementController.horizontalInput;
         verticalInput = movementController.verticalInput;
 
-        if (verticalInput > 0 && horizontalInput > -0.5 && horizontalInput < 0.5) { spriteRenderer.sprite = nSpriteArray[0]; 
-            lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x,lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, -22.5f, 22.6f)); }
-        if (verticalInput < 0 && horizontalInput > -0.5 && horizontalInput < 0.5) { spriteRenderer.sprite = sSpriteArray[0];
-            /*lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, -22.5f, 22.6f));*/ }
-        if (horizontalInput > 0 && verticalInput > -0.5 && verticalInput < 0.5) { spriteRenderer.sprite = eSpriteArray[0]; 
-            lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, -112.5f, -67.6f)); }
-        if (horizontalInput < 0 && verticalInput > -0.5 && verticalInput < 0.5) { spriteRenderer.sprite = wSpriteArray[0]; 
-            lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, 67.6f, 112.5f)); }
-        if (horizontalInput > 0 && verticalInput > 0) { spriteRenderer.sprite = neSpriteArray[0]; 
-            lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, -67.6f , -22.5f)); }
-        if (horizontalInput > 0 && verticalInput < 0) { spriteRenderer.sprite = seSpriteArray[0]; 
-            lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, -157.5f , -112.6f)); }
-        if (horizontalInput < 0 && verticalInput > 0) { spriteRenderer.sprite = nwSpriteArray[0]; 
-            lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, 22.6f, 67.5f)); }
-        if (horizontalInput < 0 && verticalInput < 0) { spriteRenderer.sprite = swSpriteArray[0]; 
-            lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, 112.6f, 157.5f)); }
-        if (horizontalInput > -0.5 && horizontalInput < 0.5 && verticalInput > -0.5 && verticalInput < 0.5)
+        if (verticalInput > 0 && horizontalInput > -0.5 && horizontalInput < 0.5) 
+        { 
+            spriteRenderer.sprite = nSpriteArray[0];
+            lrc.moveDir = 0;
+        }
+        else if (verticalInput < 0 && horizontalInput > -0.5 && horizontalInput < 0.5) 
+        { 
+            spriteRenderer.sprite = sSpriteArray[0];
+            lrc.moveDir = 4;
+        }
+        else if (horizontalInput > 0 && verticalInput > -0.5 && verticalInput < 0.5) 
+        { 
+            spriteRenderer.sprite = eSpriteArray[0];
+            lrc.moveDir = 2;
+        }
+        else if (horizontalInput < 0 && verticalInput > -0.5 && verticalInput < 0.5) 
+        { 
+            spriteRenderer.sprite = wSpriteArray[0];
+            lrc.moveDir = 6;
+        }
+        else if (horizontalInput > 0 && verticalInput > 0) 
+        { 
+            spriteRenderer.sprite = neSpriteArray[0];
+            lrc.moveDir = 1;
+        }
+        else if (horizontalInput > 0 && verticalInput < 0) 
+        { 
+            spriteRenderer.sprite = seSpriteArray[0];
+            lrc.moveDir = 3;
+        }
+        else if (horizontalInput < 0 && verticalInput > 0) 
+        { 
+            spriteRenderer.sprite = nwSpriteArray[0];
+            lrc.moveDir = 7;
+        }
+        else if (horizontalInput < 0 && verticalInput < 0) 
+        { 
+            spriteRenderer.sprite = swSpriteArray[0];
+            lrc.moveDir = 5;
+        }
+        else if (horizontalInput > -0.5 && horizontalInput < 0.5 && verticalInput > -0.5 && verticalInput < 0.5)
         {
+            lrc.moveDir = 8;
             if (rotation < 22.6 && rotation > -22.5) { spriteRenderer.sprite = sSpriteArray[0]; }
             else if (rotation < -22.6 && rotation > -67.5) { spriteRenderer.sprite = swSpriteArray[0]; }
             else if (rotation < -67.6 && rotation > -112.5) { spriteRenderer.sprite = wSpriteArray[0]; }

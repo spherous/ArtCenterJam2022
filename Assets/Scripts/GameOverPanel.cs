@@ -26,5 +26,4 @@ public class GameOverPanel : MonoBehaviour
         resultText.color = endGameStatus.GetColor();
         resultText.text = endGameStatus == EndGameStatus.Win ? winText : loseText;
     }
-
 }

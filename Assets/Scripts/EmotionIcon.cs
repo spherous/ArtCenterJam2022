@@ -39,15 +39,14 @@ public class EmotionIcon : MonoBehaviour
     private void Update()
     {
         if(target != null)
-            transform.position = Vector3.up * 45 + cam.WorldToScreenPoint(target.position);
+            transform.position = Vector3.up * 140 + cam.WorldToScreenPoint(target.position);
     }
 
-    public void Track(PositiveEmotionPoint point) => 
-        point.onActivationStep += (progressPercent) => 
-        {
-            target = point.transform;
-            emotion = point.emotion;
-        };
+    public void Track(PositiveEmotionPoint point)
+    {
+        target = point.transform;
+        emotion = point.emotion;
+    }
 
     public void Kill() => fader.FadeOut(() => Destroy(gameObject));
 }

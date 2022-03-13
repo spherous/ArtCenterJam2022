@@ -7,6 +7,7 @@ public class DayNightCycle : MonoBehaviour
     public delegate void OnTimeChange(float percentageThroughDay);
     public OnTimeChange onTimeChange;
     [SerializeField] private Light2D globalLight;
+    [SerializeField] private GameManager gameManager;
     public float cycleDuration;
     private float ellapsedDuration;
 
@@ -15,34 +16,14 @@ public class DayNightCycle : MonoBehaviour
     public float duskDawnIntensity;
     public float midnightIntensity;
 
-    // public Transform streetLightContainer;
-    
-    // private List<StreetLight> streetLights = new List<StreetLight>();
-    // private bool streetLightsOn = false;
-
-    // public List<Material> treeMat = new List<Material>();
-
     public bool cycle = false;
-
-    private void Start()
-    {
-        // for(int i = 0; i <= streetLightContainer.childCount - 1; i++)
-        // {
-            // StreetLight light = streetLightContainer.GetChild(i).GetComponent<StreetLight>();
-            // light.OffImmediate();
-            // streetLights.Add(light);
-        // }
-        
-        // foreach(StreetLight light in streetLights)
-        //     light.OffImmediate();
-        
-        // foreach(Material mat in treeMat)
-        //     mat.SetColor("_Color", Color.white);
-    }
 
     private void Update()
     {
         if(!cycle)
+            return;
+        
+        if(gameManager != null && gameManager.gameOver)
             return;
 
         ellapsedDuration += Time.deltaTime;
@@ -53,11 +34,6 @@ public class DayNightCycle : MonoBehaviour
 
         globalLight.intensity = Mathf.Clamp01(Mathf.Lerp(startVal, endVal, t));
         onTimeChange?.Invoke(becomingDay ? t / 2 + 0.5f : t / 2);
-        // Color startColor = becomingDay ? Color.black : Color.white;
-        // Color endColor = becomingDay ? Color.white : Color.black;
-
-        // foreach(Material mat in treeMat)
-        //     mat.SetColor("_Color", Color.Lerp(startColor, endColor, t));
 
         if(globalLight.intensity == midnightIntensity && !becomingDay)
         {
@@ -68,20 +44,7 @@ public class DayNightCycle : MonoBehaviour
         {
             ellapsedDuration = 0;
             becomingDay = false;
-        }
-        // else if(globalLight.intensity >= .4f && becomingDay && streetLightsOn)
-        // {
-        //     streetLightsOn = false;
-            
-            // foreach(StreetLight light in streetLights)
-            //     light.Off();
-        // }
-        // else if(globalLight.intensity <= .4f && !becomingDay && !streetLightsOn)
-        // {
-        //     streetLightsOn = true;
-            // foreach(StreetLight light in streetLights)
-            //     light.On();
-        // }
-        
+            gameManager?.GameOver(EndGameStatus.Win);
+        }        
     }
 }

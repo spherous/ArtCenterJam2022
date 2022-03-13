@@ -7516,6 +7516,18 @@ PrefabInstance:
       propertyPath: enemyPrefab
       value: 
       objectReference: {fileID: 5856142505213111026, guid: fcc7977c985cc724484132879e75384d, type: 3}
+    - target: {fileID: 5065937339588449601, guid: 9335f068b0998b04392384c3ea9de920, type: 3}
+      propertyPath: maxSpawnRate
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065937339588449601, guid: 9335f068b0998b04392384c3ea9de920, type: 3}
+      propertyPath: minSpawnRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065937339588449601, guid: 9335f068b0998b04392384c3ea9de920, type: 3}
+      propertyPath: dayNightCycle
+      value: 
+      objectReference: {fileID: 662774179}
     - target: {fileID: 5065937339588449606, guid: 9335f068b0998b04392384c3ea9de920, type: 3}
       propertyPath: m_Name
       value: EnemySpawner (2)
@@ -8914,6 +8926,18 @@ PrefabInstance:
       propertyPath: enemyPrefab
       value: 
       objectReference: {fileID: 5856142505213111026, guid: fcc7977c985cc724484132879e75384d, type: 3}
+    - target: {fileID: 5065937339588449601, guid: 9335f068b0998b04392384c3ea9de920, type: 3}
+      propertyPath: maxSpawnRate
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065937339588449601, guid: 9335f068b0998b04392384c3ea9de920, type: 3}
+      propertyPath: minSpawnRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065937339588449601, guid: 9335f068b0998b04392384c3ea9de920, type: 3}
+      propertyPath: dayNightCycle
+      value: 
+      objectReference: {fileID: 662774179}
     - target: {fileID: 5065937339588449606, guid: 9335f068b0998b04392384c3ea9de920, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
@@ -27975,6 +27999,18 @@ PrefabInstance:
       propertyPath: enemyPrefab
       value: 
       objectReference: {fileID: 5856142505213111026, guid: fcc7977c985cc724484132879e75384d, type: 3}
+    - target: {fileID: 5065937339588449601, guid: 9335f068b0998b04392384c3ea9de920, type: 3}
+      propertyPath: maxSpawnRate
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065937339588449601, guid: 9335f068b0998b04392384c3ea9de920, type: 3}
+      propertyPath: minSpawnRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065937339588449601, guid: 9335f068b0998b04392384c3ea9de920, type: 3}
+      propertyPath: dayNightCycle
+      value: 
+      objectReference: {fileID: 662774179}
     - target: {fileID: 5065937339588449606, guid: 9335f068b0998b04392384c3ea9de920, type: 3}
       propertyPath: m_Name
       value: EnemySpawner (3)

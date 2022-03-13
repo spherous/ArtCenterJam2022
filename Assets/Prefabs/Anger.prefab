@@ -119,7 +119,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   player: {fileID: 0}
   attackCooldown: 1
-  moveSpeed: 2.5
+  moveSpeed: 2.2
   maxLight: 7000
   lightMultiplier: 1
   lightThreshold: 400

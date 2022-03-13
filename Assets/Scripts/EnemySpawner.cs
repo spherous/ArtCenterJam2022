@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public int MinNumOfEnemies;
-    public int MaxNumOfEnemies;
+    [SerializeField] private DayNightCycle dayNightCycle;
+    public float minSpawnRate;
+    public float maxSpawnRate;
+    private float currentSpawnRate;
+    private float nextSpawnAtTime;
 
     public float MinX;
     public float MaxX;
@@ -14,28 +18,28 @@ public class EnemySpawner : MonoBehaviour
 
     public Transform enemyPrefab;
 
-    // Start is called before the first frame update
     void Start()
-    {
-        int r = Random.Range(MinNumOfEnemies, MaxNumOfEnemies);
-
-        float x;
-        float y;
-        float z = 0;
-        for (int i = 0; i < r; i++)
-        {
-            x = Random.Range(MinX, MaxX);
-            y = Random.Range(MinY, MaxY);
-            Transform t = Instantiate(enemyPrefab, new Vector3(x, y, 0), Quaternion.identity);
-            t.GetComponent<Enemy>().enemyType = (Emotions.Emotion) Random.Range(1, 4);
-            t.gameObject.SetActive(true);
-        }
+    { 
+        currentSpawnRate = maxSpawnRate;
+        dayNightCycle.onTimeChange += OnTimeChange;
     }
 
-    // Update is called once per frame
+    private void OnTimeChange(float percentageThroughDay) => currentSpawnRate = percentageThroughDay <= 0.5f
+        ? Mathf.Lerp(maxSpawnRate, minSpawnRate, percentageThroughDay * 2)
+        : Mathf.Lerp(minSpawnRate, maxSpawnRate, (percentageThroughDay - 0.5f) * 2);
+
     void Update()
     {
-
+        if(Time.timeSinceLevelLoad >= nextSpawnAtTime)
+        {
+            Debug.Log("Spawning enemy");
+            float x = UnityEngine.Random.Range(MinX, MaxX);
+            float y = UnityEngine.Random.Range(MinY, MaxY);
+            Transform t = Instantiate(enemyPrefab, new Vector3(x, y, 0), Quaternion.identity);
+            t.GetComponent<Enemy>().enemyType = (Emotions.Emotion)UnityEngine.Random.Range(1, 4);
+            t.gameObject.SetActive(true);
+            nextSpawnAtTime = Time.timeSinceLevelLoad + currentSpawnRate;
+        }
     }
 }
 public static class Extension

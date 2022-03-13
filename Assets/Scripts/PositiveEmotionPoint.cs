@@ -25,12 +25,18 @@ public class PositiveEmotionPoint : MonoBehaviour
     private void Awake() {
         canvas = FindObjectOfType<Canvas>().GetComponent<RectTransform>();
         gameManager = FindObjectOfType<GameManager>();
-        CompleteCooldown();
+        Color emotionColor = emotion.GetColor();
+        circle.color = new Color(emotionColor.r, emotionColor.g, emotionColor.b, circle.color.a);
+        emoIcon = Instantiate(emoIconPrefab, canvas.transform);
+        emoIcon.Track(this);
         circle.transform.localScale = circle.transform.localScale * activationRadius;
     }
 
     private void Update()
     {
+        if(gameManager.gameOver)
+            return;
+
         if(ellapsedActivationTime.HasValue && ellapsedActivationTime.Value >= activationDelay)
             CompleteEmotional();
         else if(ellapsedActivationTime.HasValue)
@@ -71,6 +77,9 @@ public class PositiveEmotionPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(gameManager.gameOver)
+            return;
+            
         Debug.Log("Enter");
         if(!offcooldownAtTime.HasValue || Time.timeSinceLevelLoad >= offcooldownAtTime.Value)
         {
@@ -81,6 +90,9 @@ public class PositiveEmotionPoint : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
+        if(gameManager.gameOver)
+            return;
+            
         Debug.Log("Exit");
         ellapsedActivationTime = null;
         progressBar?.Kill();

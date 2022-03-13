@@ -24,8 +24,6 @@ public class LightRotationController : MonoBehaviour
     {
         if(gameManager != null && gameManager.gameOver)
             return;
-
-        Debug.Log(new Vector2(0.98319522f, -0.78043041f).normalized);
         rotStep = rotationSpeed * Time.deltaTime;
         MathHell();
         FollowMouse();

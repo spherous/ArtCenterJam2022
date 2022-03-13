@@ -23,5 +23,9 @@ public class CameraFollow : MonoBehaviour
     {
        elapsedTime += Time.deltaTime;
        transform.position = Vector3.Lerp(pos.position + offset, playerTransform.position + offset, elapsedTime / followSpeed);
+        {
+            pos = transform;
+            elapsedTime = 0f;
+        }
     }
 }

@@ -82,13 +82,16 @@ public class PositiveEmotionPoint : MonoBehaviour
     {
         if(gameManager.gameOver)
             return;
-            
-        Debug.Log("Enter");
-        if(!offcooldownAtTime.HasValue || Time.timeSinceLevelLoad >= offcooldownAtTime.Value)
+        
+        if(other.transform.root.gameObject.TryGetComponent<Player>(out Player player))
         {
-            progressBar = Instantiate(progressBarPrefab, canvas.transform);
-            progressBar.TrackProgress(this);
-            ellapsedActivationTime = 0;
+            if(!offcooldownAtTime.HasValue || Time.timeSinceLevelLoad >= offcooldownAtTime.Value)
+            {
+                Debug.Log("Enter");
+                progressBar = Instantiate(progressBarPrefab, canvas.transform);
+                progressBar.TrackProgress(this);
+                ellapsedActivationTime = 0;
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -96,8 +99,11 @@ public class PositiveEmotionPoint : MonoBehaviour
         if(gameManager.gameOver)
             return;
             
-        Debug.Log("Exit");
-        ellapsedActivationTime = null;
-        progressBar?.Kill();
+        if(other.transform.root.gameObject.TryGetComponent<Player>(out Player player))
+        {
+            Debug.Log("Exit");
+            ellapsedActivationTime = null;
+            progressBar?.Kill();
+        }
     }
 }

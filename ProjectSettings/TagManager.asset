@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Concrete
+  - FootCollider
   layers:
   - Default
   - TransparentFX
@@ -12,9 +13,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Foot collider
+  - Concrete
   - 
   - 
   - 
@@ -50,4 +51,7 @@ TagManager:
     locked: 0
   - name: Bridge
     uniqueID: 3194376239
+    locked: 0
+  - name: Infront of Bridge
+    uniqueID: 3517716387
     locked: 0

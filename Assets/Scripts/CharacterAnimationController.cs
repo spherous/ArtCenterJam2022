@@ -27,8 +27,11 @@ public class CharacterAnimationController : MonoBehaviour
     public Sprite[] swSpriteArray;
     public Sprite[] nwSpriteArray;
 
+    GameManager gameManager;
+
     private void Awake()
     {
+        gameManager = GameObject.FindObjectOfType<GameManager>();
         frameCount = 4;
         frame = 0;
         timeCounter = Time.timeSinceLevelLoad + animationFPS;
@@ -38,6 +41,9 @@ public class CharacterAnimationController : MonoBehaviour
     }
     private void Update()
     {
+        if(gameManager != null && gameManager.gameOver)
+            return;
+            
         if (horizontalInput > -0.5 && horizontalInput < 0.5 && verticalInput > -0.5 && verticalInput < 0.5)
         {
             frame = 0;

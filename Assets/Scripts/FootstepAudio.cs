@@ -4,5 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 public class FootstepAudio : MonoBehaviour
 {
-
+    public AudioSource audioSource;
+    public AudioClip[] grass;
+    public AudioClip[] concrete;
 }

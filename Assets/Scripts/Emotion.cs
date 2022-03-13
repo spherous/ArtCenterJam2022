@@ -7,9 +7,9 @@ namespace Emotions
     public static class EmotionExtensions
     {
         public static Color GetColor(this Emotion emotion) => emotion switch {
-            Emotion.Anger => Color.red,
-            Emotion.Fear => new Color(106f/255f, 45f/255f, 204f/255f, 1f),
-            Emotion.Sadness => Color.blue,
+            Emotion.Anger => new Color(1, 29f/255f, 0, 1f),
+            Emotion.Fear => new Color(99f/255f, 14f/255f, 144f/255f, 1f),
+            Emotion.Sadness => new Color(0, 133f/255f, 202f/255f, 1f),
             Emotion.Peace => Color.cyan,
             Emotion.Joy => Color.yellow,
             Emotion.Love => Color.magenta,

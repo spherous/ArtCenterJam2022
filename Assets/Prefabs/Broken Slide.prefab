@@ -284,6 +284,10 @@ PrefabInstance:
       propertyPath: activationRadius
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 2867641391045807742, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
+      propertyPath: m_Color.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
     - target: {fileID: 2867641391387479544, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
       propertyPath: m_IsActive
       value: 0

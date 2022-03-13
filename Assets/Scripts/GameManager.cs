@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private Volume postProcessingVolume;
     [SerializeField] private GameOverPanel gameOverPanel;
+    [SerializeField] private MovementController movementController;
 
     [MinMaxSlider(0, 1, true)] public Vector2 smoothnessMinMax;
     [MinMaxSlider(0, 1, true)] public Vector2 intensityMinMax;
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
     public void GameOver(EndGameStatus endGameStatus)
     {
         gameOver = true;
+        movementController.SetVelocityToZero();
         Debug.Log("Game Over");
         gameOverPanel.GameOver(endGameStatus);
     }

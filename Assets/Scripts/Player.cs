@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     // public List<EmotionDot> emotionDots = new List<EmotionDot>();
     [SerializeField] private MovementController movementController;
     [SerializeField] private Light2D lanternLight;
-    [SerializeField] private RotateTowardTarget rotator;
+    [SerializeField] private LightRotationController rotator;
 
     public void UpdateNewEmotionEffects(List<EmotionDot> emotionDots)
     {

@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementController: {fileID: 860441663}
+  lrc: {fileID: 1101906471}
   lightRotator: {fileID: 1101906469}
   spriteRenderer: {fileID: 125577475}
   animationFPS: 0
@@ -955,12 +956,13 @@ MonoBehaviour:
   player: {fileID: 860441665}
   postProcessingVolume: {fileID: 1758345363}
   gameOverPanel: {fileID: 559001229}
+  movementController: {fileID: 860441663}
   smoothnessMinMax: {x: 0.293, y: 0.587}
   intensityMinMax: {x: 0.378, y: 0.881}
   emotionDots: []
   maximumEmotionalBaggage: -20
   emotionSpawnSpeed: 1
-  spawnRandomEmotions: 1
+  spawnRandomEmotions: 0
 --- !u!4 &626010295
 Transform:
   m_ObjectHideFlags: 0
@@ -1062,7 +1064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalLight: {fileID: 662774177}
   gameManager: {fileID: 626010294}
-  cycleDuration: 300
+  cycleDuration: 10
   duskDawnIntensity: 0.33
   midnightIntensity: 0.005
   cycle: 1
@@ -1494,6 +1496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 860441662}
+  gameManager: {fileID: 626010294}
   maxSpeed: 5
   horizontalInput: 0
   verticalInput: 0
@@ -2035,13 +2038,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1101906468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4a013b609e366644abcadee2e1f6648, type: 3}
+  m_Script: {fileID: 11500000, guid: e94cd012b99e9b24c98ade5b28d346db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 120
-  targetTransform: {fileID: 0}
-  selfTransform: {fileID: 860441660}
-  isPlayer: 1
+  moveDir: 0
 --- !u!1001 &1180643541
 PrefabInstance:
   m_ObjectHideFlags: 0

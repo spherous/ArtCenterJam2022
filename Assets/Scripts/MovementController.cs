@@ -5,6 +5,7 @@ using static UnityEngine.InputSystem.InputAction;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] private GameManager gameManager;
     public float maxSpeed;
     private float speedMax;
     public float horizontalInput;
@@ -28,6 +29,9 @@ public class MovementController : MonoBehaviour
     }
     private void Update()
     {
+        if(gameManager.gameOver)
+            return;
+
         if (dashed)
         {
             if (Time.timeSinceLevelLoad >= dashTime){ maxSpeed = speedMax;}
@@ -80,19 +84,26 @@ public class MovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(gameManager.gameOver)
+            return;
         rb.velocity = new Vector2(velocityX,velocityY);
     }
     public void MoveHorizontal(CallbackContext context) 
     {
+        if(gameManager.gameOver)
+            return;
         horizontalInput = context.ReadValue<float>();
     }
     public void MoveVertical(CallbackContext context)
     {
+        if(gameManager.gameOver)
+            return;
         verticalInput = context.ReadValue<float>();
     }
     public void Dash(CallbackContext context)
     {
-        
+        if(gameManager.gameOver)
+            return;
         if (context.started)
         {
             if(dashed) { return; }
@@ -103,7 +114,8 @@ public class MovementController : MonoBehaviour
             dashCooldownTimer = Time.timeSinceLevelLoad + dashCooldown;
             dashTime = Time.timeSinceLevelLoad + dashRate;
         }
-
     }
+
+    public void SetVelocityToZero() => rb.velocity = Vector2.zero;
 
 }

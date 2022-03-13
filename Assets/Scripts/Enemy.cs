@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     public Emotions.Emotion enemyType;
     public EnemyMovement Style;
 
-    public float Speed = 1;
+
     public float SpiralSpeedX = 1;
     public float SpiralSpeedY = 1;
     public float SpiralAmplitutdeX;
@@ -98,13 +98,13 @@ public class Enemy : MonoBehaviour
                 }
                 break;
             case EnemyMovement.FollowPlayer:
-                move = direction * -Speed * Time.deltaTime;
+                move = direction * -enemyAnimation.moveSpeed * Time.deltaTime;
                 transform.position += move;
                 if (LightAccumulation > LightThreshold) Style = EnemyMovement.RunFromPlayer;
                 velocity = (move).normalized;
                 break;
             case EnemyMovement.RunFromPlayer:
-                move = direction * Speed * Time.deltaTime;
+                move = direction * enemyAnimation.moveSpeed * Time.deltaTime;
                 transform.position += move;
                 if (LightAccumulation <= 0) Style = EnemyMovement.FollowPlayer;
                 velocity = (move).normalized;

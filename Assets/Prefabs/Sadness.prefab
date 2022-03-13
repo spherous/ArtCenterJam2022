@@ -119,6 +119,7 @@ MonoBehaviour:
   animator: {fileID: 4784299340779681519}
   player: {fileID: 0}
   attackCooldown: 1.5
+  moveSpeed: 1
 --- !u!82 &8977441632585126049
 AudioSource:
   m_ObjectHideFlags: 0

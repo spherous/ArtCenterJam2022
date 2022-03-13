@@ -47,9 +47,11 @@ public class GroupFader : MonoBehaviour
     }
 
     [Button]
-    public void FadeOut(Action action, bool deactivateOnComplete = false)
+    public void FadeOut(Action action = null, bool deactivateOnComplete = false)
     {
         if(group == null)
+            return;
+        if(!visible)
             return;
         // Debug.Log($"Closing {gameObject.name}.");
         group.alpha = 1;
@@ -65,6 +67,8 @@ public class GroupFader : MonoBehaviour
     [Button]
     public void FadeIn()
     {
+        if(visible)
+            return;
         // Debug.Log($"Opening {gameObject.name}.");
         group.alpha = 0;
         sign = TriSign.Positive;

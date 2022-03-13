@@ -41,7 +41,8 @@ public class Enemy : MonoBehaviour
     private Vector3 inital_position;
     public Vector3 velocity = Vector3.zero;
     private Vector3 move_last = Vector3.zero;
-
+    private Transform animationObject;
+    private EnemyAnimation enemyAnimation;
 
     // Start is called before the first frame update
     void Start()
@@ -50,13 +51,21 @@ public class Enemy : MonoBehaviour
         int children = transform.childCount;
         for(int child = 0; child < transform.childCount; child++)
         {
-            if( transform.GetChild(child).name == "Anger" )
+            if (transform.GetChild(child).name == "Anger" && enemyType == EnemyType.Anger)
             {
-                //transform.GetChild(child).
+                animationObject = transform.GetChild(child);
+            }
+            if (transform.GetChild(child).name == "Fear" && enemyType == EnemyType.Fear)
+            {
+                animationObject = transform.GetChild(child);
+            }
+            if (transform.GetChild(child).name == "Sadness" && enemyType == EnemyType.Sadness)
+            {
+                animationObject = transform.GetChild(child);
             }
         }
-
-
+        animationObject.gameObject.SetActive(true);
+        enemyAnimation = animationObject.GetComponent<EnemyAnimation>();
     }
 
     // Update is called once per frame
@@ -98,7 +107,15 @@ public class Enemy : MonoBehaviour
                 if (LightAccumulation <= 0) Style = EnemyMovement.Spiral;
                 break;
         }
-        //Debug.DrawLine(transform.position, Player.position, Color.red);
+        Debug.DrawLine(transform.position, Player.position, Color.red);
+
+        if ((transform.position - Player.position).magnitude < 3)
+        {
+            enemyAnimation.Attack(true);
+        }
+        else
+            enemyAnimation.Attack(false);
+
         //Debug.DrawLine(transform.position, transform.position + velocity, Color.red);
         move_last = move;
     }

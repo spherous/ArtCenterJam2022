@@ -22,4 +22,9 @@ public class EnemyAnimation : MonoBehaviour
         animator.SetFloat("Vertical", enemy.velocity.y);
         animator.SetFloat("Speed", enemy.velocity.sqrMagnitude);
     }
+
+    public void Attack(bool attack)
+    {
+        animator.SetBool("Attack", attack);
+    }
 }

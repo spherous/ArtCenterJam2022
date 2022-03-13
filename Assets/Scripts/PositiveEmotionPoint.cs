@@ -18,14 +18,14 @@ public class PositiveEmotionPoint : MonoBehaviour
     private float? offcooldownAtTime;
     public Emotion emotion;
     public ProgressBar progressBarPrefab;
-
+    public EmotionIcon emoIconPrefab;
+    private EmotionIcon emoIcon;
     private ProgressBar progressBar;
 
     private void Awake() {
         canvas = FindObjectOfType<Canvas>().GetComponent<RectTransform>();
         gameManager = FindObjectOfType<GameManager>();
-        Color emotionColor = emotion.GetColor();
-        circle.color = new Color(emotionColor.r, emotionColor.g, emotionColor.b, circle.color.a);
+        CompleteCooldown();
         circle.transform.localScale = circle.transform.localScale * activationRadius;
     }
 
@@ -57,13 +57,16 @@ public class PositiveEmotionPoint : MonoBehaviour
         circle.color = new Color(emotionColor.r, emotionColor.g, emotionColor.b, circle.color.a);
         offcooldownAtTime = null;
         circleCollider.enabled = true;
+        emoIcon = Instantiate(emoIconPrefab, canvas.transform);
+        emoIcon.Track(this);
     }
 
     public void StartCooldown()
     {
         circleCollider.enabled = false;
         circle.color = new Color(0.75f, 0.75f, 0.75f, circle.color.a);
-        offcooldownAtTime = Time.timeSinceLevelLoad + cooldownDuration;       
+        offcooldownAtTime = Time.timeSinceLevelLoad + cooldownDuration;
+        emoIcon?.Kill();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

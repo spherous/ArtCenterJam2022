@@ -60,14 +60,13 @@ public class GameManager : MonoBehaviour
         float percentToLoss = Mathf.Abs(Mathf.Clamp(emotionalBaggage, maximumEmotionalBaggage, Mathf.Abs(maximumEmotionalBaggage)) + maximumEmotionalBaggage) / (Mathf.Abs(maximumEmotionalBaggage) * 2);
         Debug.Log($"Emotional baggage: {emotionalBaggage}");
 
-
         if(emotionalBaggage <= maximumEmotionalBaggage)
             GameOver();
 
         if(postProcessingVolume.profile.TryGet(out Vignette vignette))
         {
             vignette.intensity.Override(Mathf.Lerp(intensityMinMax.x, intensityMinMax.y, percentToLoss));
-            vignette.intensity.Override(Mathf.Lerp(smoothnessMinMax.x, smoothnessMinMax.y, percentToLoss));
+            vignette.smoothness.Override(Mathf.Lerp(smoothnessMinMax.x, smoothnessMinMax.y, percentToLoss)); 
         }
 
         player.UpdateNewEmotionEffects(emotionDots);

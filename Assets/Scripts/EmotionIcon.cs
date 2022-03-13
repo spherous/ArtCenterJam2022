@@ -39,7 +39,7 @@ public class EmotionIcon : MonoBehaviour
     private void Update()
     {
         if(target != null)
-            transform.position = Vector3.up * 140 + cam.WorldToScreenPoint(target.position);
+            transform.position = Vector3.up * 80 + cam.WorldToScreenPoint(target.position);
     }
 
     public void Track(PositiveEmotionPoint point)

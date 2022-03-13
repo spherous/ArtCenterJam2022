@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -171,9 +171,9 @@ MonoBehaviour:
   angerIcon: {fileID: 21300000, guid: b7449fcd3edb00542bb614f9fd747ef0, type: 3}
   fearIcon: {fileID: 21300000, guid: 6f99816da853d9e4fb502e3e2c50937f, type: 3}
   sadnessIcon: {fileID: 21300000, guid: be7b736394d58194abc55294a3d19a66, type: 3}
-  joyIcon: {fileID: 0}
-  loveIcon: {fileID: 0}
-  peaceIcon: {fileID: 0}
+  joyIcon: {fileID: 21300000, guid: e38c9e8c37a7a4b49bc9d781f7dab990, type: 3}
+  loveIcon: {fileID: 21300000, guid: c8980980b84a7ba4c8548765db3ba104, type: 3}
+  peaceIcon: {fileID: 21300000, guid: c39a7917c8b74184fb6b89be39bbd744, type: 3}
 --- !u!114 &4065498645571018882
 MonoBehaviour:
   m_ObjectHideFlags: 0

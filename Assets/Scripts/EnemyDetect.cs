@@ -8,22 +8,20 @@ public class EnemyDetect : MonoBehaviour
     public Transform player;
     public float arc = 45;
     public int rays = 5;
-    public int distance = 5;
+    public float distance = 5;
 
-    [SerializeField] Vector2 direction;
+    //[SerializeField] Vector2 direction;
+
+    private Player playerScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerScript = player.GetComponent<Player>();
     }
 
     // Update is called once per frame
     void Update()
-    {
-    }
-
-    void FixedUpdate()
     {
         // Bit shift the index of the layer (8) to get a bit maskwdaw
         int layerMask = 1 << 8;
@@ -35,7 +33,7 @@ public class EnemyDetect : MonoBehaviour
 
         for (int ray = 0; ray < rays; ray++)
         {
-            direction = (Vector2)player.transform.up;
+            Vector2 direction = (Vector2)player.transform.up;
             Vector2 fan = Quaternion.Euler(0, 0, (float)(ray - ((float)rays / 2.0f)) * (arc / rays)) * direction;
 
             //Debug.DrawLine(player.position, ((Vector2)player.position + (fan * distance)), Color.blue);
@@ -46,7 +44,7 @@ public class EnemyDetect : MonoBehaviour
             if (Physics.Raycast(player.position, fan, out hit, distance, layerMask))
             {
                 var script = hit.transform.GetComponent<Enemy>();
-                if(script != null) ((Enemy)script).LightAccumulation++;
+                if (script != null) ((Enemy)script).LightAccumulation+=2;
 
                 Debug.DrawRay(player.position, fan * hit.distance, Color.yellow);
                 //Debug.Log("Did Hit");

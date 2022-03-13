@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: a742eded8503a0c4db8cfb5275392a3c
+guid: 2450823d3bfca794f828c6ff779dcd0d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 302296492181684499
-    second: MC-S-WC_0
+      213: -7033754198569492801
+    second: sadness_attack_left_sprite_sheet_0
   - first:
-      213: -1828952183840760105
-    second: MC-S-WC_1
+      213: -3332290823364592019
+    second: sadness_attack_left_sprite_sheet_1
   - first:
-      213: -7678427924997215948
-    second: MC-S-WC_2
+      213: -6785489850310628954
+    second: sadness_attack_left_sprite_sheet_2
   - first:
-      213: 2107929483225803498
-    second: MC-S-WC_3
+      213: -8615105107259953684
+    second: sadness_attack_left_sprite_sheet_3
+  - first:
+      213: 266290834536182615
+    second: sadness_attack_left_sprite_sheet_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +130,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MC-S-WC_0
+      name: sadness_attack_left_sprite_sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,14 +144,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3110659de09f13400800000000000000
-      internalID: 302296492181684499
+      spriteID: fbe5ad4a2d5136e90800000000000000
+      internalID: -7033754198569492801
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC-S-WC_1
+      name: sadness_attack_left_sprite_sheet_1
       rect:
         serializedVersion: 2
         x: 256
@@ -162,14 +165,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7de1ff2dda14e96e0800000000000000
-      internalID: -1828952183840760105
+      spriteID: d6e3f01c62351c1d0800000000000000
+      internalID: -3332290823364592019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC-S-WC_2
+      name: sadness_attack_left_sprite_sheet_2
       rect:
         serializedVersion: 2
         x: 512
@@ -183,14 +186,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 439e919fb7eb07590800000000000000
-      internalID: -7678427924997215948
+      spriteID: 6a96735aee815d1a0800000000000000
+      internalID: -6785489850310628954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC-S-WC_3
+      name: sadness_attack_left_sprite_sheet_3
       rect:
         serializedVersion: 2
         x: 768
@@ -204,8 +207,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aea2f3b52bed04d10800000000000000
-      internalID: 2107929483225803498
+      spriteID: ceded1bbc8ff07880800000000000000
+      internalID: -8615105107259953684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sadness_attack_left_sprite_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 753b8776a1e02b300800000000000000
+      internalID: 266290834536182615
       vertices: []
       indices: 
       edges: []
@@ -213,7 +237,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ab338a22dc88a764a8542c9922ec29cf
+    spriteID: 40e7f7181ed0c09418be1d213f6c69ad
     internalID: 0
     vertices: []
     indices: 

@@ -22,11 +22,14 @@ public class PositiveEmotionPoint : MonoBehaviour
     private EmotionIcon emoIcon;
     private ProgressBar progressBar;
 
+    public float cooldownTransparency;
+    public float activeTransparency;
+
     private void Awake() {
         canvas = FindObjectOfType<Canvas>().GetComponent<RectTransform>();
         gameManager = FindObjectOfType<GameManager>();
         Color emotionColor = emotion.GetColor();
-        circle.color = new Color(emotionColor.r, emotionColor.g, emotionColor.b, circle.color.a);
+        circle.color = new Color(emotionColor.r, emotionColor.g, emotionColor.b, activeTransparency/255f);
         emoIcon = Instantiate(emoIconPrefab, canvas.transform);
         emoIcon.Track(this);
         circle.transform.localScale = circle.transform.localScale * activationRadius;
@@ -60,7 +63,7 @@ public class PositiveEmotionPoint : MonoBehaviour
     private void CompleteCooldown()
     {
         Color emotionColor = emotion.GetColor();
-        circle.color = new Color(emotionColor.r, emotionColor.g, emotionColor.b, circle.color.a);
+        circle.color = new Color(emotionColor.r, emotionColor.g, emotionColor.b, activeTransparency/255f);
         offcooldownAtTime = null;
         circleCollider.enabled = true;
         emoIcon = Instantiate(emoIconPrefab, canvas.transform);
@@ -70,7 +73,7 @@ public class PositiveEmotionPoint : MonoBehaviour
     public void StartCooldown()
     {
         circleCollider.enabled = false;
-        circle.color = new Color(0.75f, 0.75f, 0.75f, circle.color.a);
+        circle.color = new Color(0.75f, 0.75f, 0.75f, cooldownTransparency/255f);
         offcooldownAtTime = Time.timeSinceLevelLoad + cooldownDuration;
         emoIcon?.Kill();
     }

@@ -4119,8 +4119,10 @@ MonoBehaviour:
   lightRotator: {fileID: 650931999}
   spriteRenderer: {fileID: 1946225709}
   animationFPS: 0
+  isAnimating: 0
   nSpriteArray:
   - {fileID: -7466069876368927371, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -4129,8 +4131,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   eSpriteArray:
   - {fileID: -3004440036116213242, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -4139,8 +4143,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   neSpriteArray:
   - {fileID: 6271278542525949802, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -4149,13 +4155,16 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   swSpriteArray:
   - {fileID: -6715998170981264839, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   nwSpriteArray:
   - {fileID: 7382708736271802583, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

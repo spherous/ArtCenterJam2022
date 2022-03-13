@@ -20,7 +20,6 @@ public class LightRotationController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(new Vector2(0.98319522f, -0.78043041f).normalized);
         rotStep = rotationSpeed * Time.deltaTime;
         MathHell();
         FollowMouse();

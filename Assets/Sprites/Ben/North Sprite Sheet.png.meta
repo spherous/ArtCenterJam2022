@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: -5038278156396779206
     second: North Sprite Sheet_2
+  - first:
+      213: -8093000451564386337
+    second: North Sprite Sheet_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -182,6 +185,27 @@ TextureImporter:
       bones: []
       spriteID: a392c50f5b0741ab0800000000000000
       internalID: -5038278156396779206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: North Sprite Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd7cd65c7f2efaf80800000000000000
+      internalID: -8093000451564386337
       vertices: []
       indices: 
       edges: []

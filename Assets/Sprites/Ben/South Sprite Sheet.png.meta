@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 6703266054480242096
     second: South Sprite Sheet_2
+  - first:
+      213: 4764353688376815699
+    second: South Sprite Sheet_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -182,6 +185,27 @@ TextureImporter:
       bones: []
       spriteID: 0b5aa3c06f8c60d50800000000000000
       internalID: 6703266054480242096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: South Sprite Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 350b50cdf626e1240800000000000000
+      internalID: 4764353688376815699
       vertices: []
       indices: 
       edges: []

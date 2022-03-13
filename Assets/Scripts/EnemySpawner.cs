@@ -17,16 +17,16 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int r = Random.RandomRange(MinNumOfEnemies, MaxNumOfEnemies);
+        int r = Random.Range(MinNumOfEnemies, MaxNumOfEnemies);
 
         float x;
         float y;
         float z = 0;
-        for( int i = 0; i < r; i++)
+        for (int i = 0; i < r; i++)
         {
             x = Random.Range(MinX, MaxX);
-            //y;
-            //Instantiate(enemyPrefab, Vector3();
+            y = Random.Range(MinY, MaxY);
+            Instantiate(enemyPrefab, new Vector3(x, y, 0), Quaternion.identity);
         }
 
     }
@@ -34,8 +34,11 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+}
+public static class Extension
+{
 
     public static (float x, float y) GetRandomOffScreenLocation()
     {

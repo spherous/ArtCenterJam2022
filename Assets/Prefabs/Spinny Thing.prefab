@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3383585082628998666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.66, y: 0.66, z: 0.66}
   m_Children:
   - {fileID: 3383585084010379842}
   - {fileID: 7558796818166430210}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 1285615421
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: f6810a14781bbf3449cce72e2d0fcf1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 742a5686a0155dd40a58c7d915c53f2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,9 +150,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.355484, y: 0.66863775}
+  m_Offset: {x: -0.355484, y: 0.9512892}
   serializedVersion: 2
-  m_Radius: 5.2227054
+  m_Radius: 6.2011147
 --- !u!1001 &5705450562887307758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2867641389701327855, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}
       propertyPath: activationRadius
-      value: 14
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1496ad1006a18e7488518ba669e3bc61, type: 3}

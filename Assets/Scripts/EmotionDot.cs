@@ -10,10 +10,30 @@ public class EmotionDot : MonoBehaviour
     public Material positive;
     public Material negative;
     private Emotion _emotion;
+
+    public Sprite angerIcon;
+    public Sprite fearIcon;
+    public Sprite sadnessIcon;
+    public Sprite joyIcon;
+    public Sprite loveIcon;
+    public Sprite peaceIcon;
+
     public Emotion emotion {get => _emotion; set {
         _emotion = value;
+        spriteRenderer.sprite = value switch {
+            Emotion.Anger => angerIcon,
+            Emotion.Fear => fearIcon,
+            Emotion.Sadness => sadnessIcon,
+            Emotion.Joy => joyIcon,
+            Emotion.Love => loveIcon,
+            Emotion.Peace => peaceIcon,
+            _ => spriteRenderer.sprite
+        };
         spriteRenderer.sortingOrder = (int)value;
-        spriteRenderer.color = value.GetColor();
+        
+        // if(value.IsPositive())
+        //     spriteRenderer.color = value.GetColor();
+
         spriteRenderer.material = value.IsPositive() ? positive : negative;
         speed = value.GetSpeed() + Random.Range(-8f, 8f);
     }}

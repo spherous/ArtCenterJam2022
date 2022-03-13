@@ -18,7 +18,8 @@ public class PositiveEmotionPoint : MonoBehaviour
     private float? offcooldownAtTime;
     public Emotion emotion;
     public ProgressBar progressBarPrefab;
-
+    public EmotionIcon emoIconPrefab;
+    private EmotionIcon emoIcon;
     private ProgressBar progressBar;
 
     private void Awake() {
@@ -26,11 +27,16 @@ public class PositiveEmotionPoint : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         Color emotionColor = emotion.GetColor();
         circle.color = new Color(emotionColor.r, emotionColor.g, emotionColor.b, circle.color.a);
+        emoIcon = Instantiate(emoIconPrefab, canvas.transform);
+        emoIcon.Track(this);
         circle.transform.localScale = circle.transform.localScale * activationRadius;
     }
 
     private void Update()
     {
+        if(gameManager.gameOver)
+            return;
+
         if(ellapsedActivationTime.HasValue && ellapsedActivationTime.Value >= activationDelay)
             CompleteEmotional();
         else if(ellapsedActivationTime.HasValue)
@@ -57,17 +63,23 @@ public class PositiveEmotionPoint : MonoBehaviour
         circle.color = new Color(emotionColor.r, emotionColor.g, emotionColor.b, circle.color.a);
         offcooldownAtTime = null;
         circleCollider.enabled = true;
+        emoIcon = Instantiate(emoIconPrefab, canvas.transform);
+        emoIcon.Track(this);
     }
 
     public void StartCooldown()
     {
         circleCollider.enabled = false;
         circle.color = new Color(0.75f, 0.75f, 0.75f, circle.color.a);
-        offcooldownAtTime = Time.timeSinceLevelLoad + cooldownDuration;       
+        offcooldownAtTime = Time.timeSinceLevelLoad + cooldownDuration;
+        emoIcon?.Kill();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(gameManager.gameOver)
+            return;
+            
         Debug.Log("Enter");
         if(!offcooldownAtTime.HasValue || Time.timeSinceLevelLoad >= offcooldownAtTime.Value)
         {
@@ -78,6 +90,9 @@ public class PositiveEmotionPoint : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
+        if(gameManager.gameOver)
+            return;
+            
         Debug.Log("Exit");
         ellapsedActivationTime = null;
         progressBar?.Kill();

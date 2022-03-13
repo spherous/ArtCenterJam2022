@@ -47,7 +47,13 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7887779645367707856}
   positive: {fileID: 2100000, guid: cda4de61ce1feb445b82f6f2780c762e, type: 2}
   negative: {fileID: 2100000, guid: 6246ab9e70b144041ab65766ddd7b694, type: 2}
-  distance: 1
+  angerIcon: {fileID: 21300000, guid: b7449fcd3edb00542bb614f9fd747ef0, type: 3}
+  fearIcon: {fileID: 21300000, guid: 6f99816da853d9e4fb502e3e2c50937f, type: 3}
+  sadnessIcon: {fileID: 21300000, guid: be7b736394d58194abc55294a3d19a66, type: 3}
+  joyIcon: {fileID: 21300000, guid: e38c9e8c37a7a4b49bc9d781f7dab990, type: 3}
+  loveIcon: {fileID: 21300000, guid: c8980980b84a7ba4c8548765db3ba104, type: 3}
+  peaceIcon: {fileID: 21300000, guid: c39a7917c8b74184fb6b89be39bbd744, type: 3}
+  distance: 2.5
 --- !u!1 &7887779645367707857
 GameObject:
   m_ObjectHideFlags: 0

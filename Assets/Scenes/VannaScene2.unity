@@ -725,6 +725,7 @@ MonoBehaviour:
   movementController: {fileID: 177254411}
   lanternLight: {fileID: 650932001}
   rotator: {fileID: 650932000}
+  enemyDetect: {fileID: 0}
 --- !u!50 &177254413
 Rigidbody2D:
   serializedVersion: 4
@@ -4120,20 +4121,44 @@ MonoBehaviour:
   animationFPS: 0
   nSpriteArray:
   - {fileID: -7466069876368927371, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   sSpriteArray:
   - {fileID: -4231049110989657701, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   eSpriteArray:
   - {fileID: -3004440036116213242, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   wSpriteArray:
   - {fileID: 507919264788268553, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   neSpriteArray:
   - {fileID: 6271278542525949802, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   seSpriteArray:
   - {fileID: 2206057479902246086, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   swSpriteArray:
   - {fileID: -6715998170981264839, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   nwSpriteArray:
   - {fileID: 7382708736271802583, guid: ebec67ac1aa5fd2428bf7885802bd1c0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!212 &1946225709
 SpriteRenderer:
   m_ObjectHideFlags: 0

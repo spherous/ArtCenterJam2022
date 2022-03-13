@@ -62,11 +62,13 @@ public class Enemy : MonoBehaviour
                 move = direction * -Speed * Time.deltaTime;
                 transform.position += move;
                 if (LightAccumulation > LightThreshold) Style = EnemyMovement.RunFromPlayer;
+                velocity = (-move).normalized;
                 break;
             case EnemyMovement.RunFromPlayer:
                 move = direction * Speed * Time.deltaTime;
                 transform.position += move;
                 if (LightAccumulation <= 0) Style = EnemyMovement.FollowPlayer;
+                velocity = (-move).normalized;
                 break;
 
             case EnemyMovement.Spiral:
@@ -74,13 +76,14 @@ public class Enemy : MonoBehaviour
                 move = new Vector2(SpiralAmplitutdeX * Mathf.Sin(theta * SpiralSpeedX), SpiralAmplitutdeY * Mathf.Cos(theta * SpiralSpeedY));
                 transform.position = inital_position + move;
                 if (LightAccumulation > LightThreshold) Style = EnemyMovement.SpiralWait;
+                velocity = (move_last - move).normalized;
                 break;
             case EnemyMovement.SpiralWait:
                 if (LightAccumulation <= 0) Style = EnemyMovement.Spiral;
                 break;
         }
         //Debug.DrawLine(transform.position, Player.position, Color.red);
-        velocity = move_last - move;
+        //Debug.DrawLine(transform.position, transform.position + velocity, Color.red);
         move_last = move;
     }
 }

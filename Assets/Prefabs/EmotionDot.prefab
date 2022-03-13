@@ -47,7 +47,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7887779645367707856}
   positive: {fileID: 2100000, guid: cda4de61ce1feb445b82f6f2780c762e, type: 2}
   negative: {fileID: 2100000, guid: 6246ab9e70b144041ab65766ddd7b694, type: 2}
-  distance: 1
+  distance: 2.5
 --- !u!1 &7887779645367707857
 GameObject:
   m_ObjectHideFlags: 0

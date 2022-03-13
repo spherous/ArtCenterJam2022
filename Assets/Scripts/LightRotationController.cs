@@ -9,7 +9,6 @@ public class LightRotationController : MonoBehaviour
     public int moveDir;
     private float zClampedRotationMax;
     private float zClampedRotationMin;
-    //lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, 67.6f, 112.5f)); }
     Mouse mouse => Mouse.current;
     Camera cam;
     private void Awake()
@@ -28,72 +27,49 @@ public class LightRotationController : MonoBehaviour
 
         Vector3 playerScreenPosition = cam.WorldToScreenPoint(transform.position);
         Vector2 directionFromPlayerToMouse = (mouse.position.ReadValue() - (Vector2)playerScreenPosition).normalized;
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(Quaternion.LookRotation(transform.forward,directionFromPlayerToMouse).eulerAngles), rotStep);
+        
+        
+        float playerFacingDegrees = (moveDir - 1) * 45f -180;
+        Vector2 playerFacingDirection = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * playerFacingDegrees), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees));
+        Vector2 playerRightDirection = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * playerFacingDegrees + 90), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees + 90));
+        Vector2 playerLeftDirection = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * playerFacingDegrees - 90), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees - 90));
+        float difference = Vector3.Dot(directionFromPlayerToMouse, playerFacingDirection);
+        float differenceRight = Vector3.Dot(directionFromPlayerToMouse, playerRightDirection);
+        float differenceLeft = Vector3.Dot(directionFromPlayerToMouse, playerLeftDirection);
+        if (moveDir == 0)
         {
-            Quaternion lookRotation = Quaternion.LookRotation(transform.forward, directionFromPlayerToMouse);
-            Vector3 euler = transform.rotation.eulerAngles;
-            if (euler.z > 180) { euler.z = euler.z - 360; }
-            /*euler.z = Quaternion.Euler
-                (
-                Quaternion.RotateTowards
-                (
-                    transform.rotation, Quaternion.Euler
-                    (
-                        euler.x, euler.y, Mathf.Clamp
-                        (lookRotation.z
-    ,
-                            zClampedRotationMin, zClampedRotationMax
-
-                        )),
-                    rotStep
-                        ).eulerAngles.z
-                        );
-            //euler.z = Mathf.Clamp(Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(Quaternion.LookRotation(transform.forward, directionFromPlayerToMouse).eulerAngles), rotStep).eulerAngles.z, zClampedRotationMin, zClampedRotationMax);
-            transform.rotation = Quaternion.Euler(euler);*/
+            transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(Quaternion.LookRotation(transform.forward, directionFromPlayerToMouse).eulerAngles), rotStep);
         }
-    }
-        void MathHell()
+        else if (difference < 0.75)
         {
-            switch (moveDir)
-            {
-                case 0:
-                    Debug.Log("case0");
-                    zClampedRotationMin = moveDir * 45f - 22.5f;
-                    zClampedRotationMax = moveDir * 45f + 22.5f;
 
-                    break;
-                case 1:
-                    zClampedRotationMin = moveDir * 45f - 22.5f;
-                    zClampedRotationMax = moveDir * 45f + 22.5f;
-                    break;
-                case 2:
-                    zClampedRotationMin = moveDir * 45f - 22.5f;
-                    zClampedRotationMax = moveDir * 45f + 22.5f;
-                    break;
-                case 3:
-                    zClampedRotationMin = moveDir * 45f - 22.5f;
-                    zClampedRotationMax = moveDir * 45f + 22.5f;
-                    break;
-                case 4:
-                    zClampedRotationMin = moveDir * 45f - 22.5f;
-                    zClampedRotationMax = moveDir * 45f + 22.5f;
-                    break;
-                case 5:
-                    zClampedRotationMin = moveDir * 45f - 22.5f;
-                    zClampedRotationMax = moveDir * 45f + 22.5f;
-                    break;
-                case 6:
-                    zClampedRotationMin = moveDir * 45f - 22.5f;
-                    zClampedRotationMax = moveDir * 45f + 22.5f;
-                    break;
-                case 7:
-                    zClampedRotationMin = moveDir * 45f - 22.5f;
-                    zClampedRotationMax = moveDir * 45f + 22.5f;
-                    break;
-                case 8:
-                    zClampedRotationMax = Mathf.Infinity;
-                    zClampedRotationMin = Mathf.Infinity;
-                    break;
+
+            if (differenceRight >= differenceLeft) 
+            {
+                Vector2 rightDir = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * zClampedRotationMax), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees));
+                transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(Quaternion.LookRotation(transform.forward, rightDir).eulerAngles), rotStep);
+                Debug.Log(rightDir);
+            }
+            else 
+            {
+                Vector2 leftDir = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * zClampedRotationMin), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees));
+                transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(Quaternion.LookRotation(transform.forward, leftDir).eulerAngles), rotStep);
+                Debug.Log(leftDir);
             }
         }
+        else transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(Quaternion.LookRotation(transform.forward, directionFromPlayerToMouse).eulerAngles), rotStep);
     }
+    void MathHell()
+    {
+        if (moveDir == 0)
+        {
+            zClampedRotationMax = Mathf.Infinity;
+            zClampedRotationMin = Mathf.NegativeInfinity;
+        }
+        else
+        {
+            zClampedRotationMin = (moveDir-1) * 45f - 22.5f - 180;
+            zClampedRotationMax = (moveDir-1) * 45f + 22.5f - 180;
+        }
+    }
+}

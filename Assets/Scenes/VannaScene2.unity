@@ -1398,7 +1398,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1244382370}
   - component: {fileID: 1244382371}
-  - component: {fileID: 1244382372}
   - component: {fileID: 1244382373}
   m_Layer: 0
   m_Name: Lantern Light
@@ -1462,22 +1461,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &1244382372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244382369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4a013b609e366644abcadee2e1f6648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 120
-  targetTransform: {fileID: 0}
-  selfTransform: {fileID: 1493034542}
-  isPlayer: 1
 --- !u!114 &1244382373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1490,7 +1473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94cd012b99e9b24c98ade5b28d346db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0
+  rotationSpeed: 200
   moveDir: 0
 --- !u!1 &1270424850
 GameObject:
@@ -1801,7 +1784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementController: {fileID: 1493034543}
   lanternLight: {fileID: 1244382371}
-  rotator: {fileID: 1244382372}
+  rotator: {fileID: 0}
 --- !u!4 &1493034542
 Transform:
   m_ObjectHideFlags: 0

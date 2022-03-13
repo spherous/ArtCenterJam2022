@@ -9,6 +9,8 @@ public class LightRotationController : MonoBehaviour
     public int moveDir;
     private float zClampedRotationMax;
     private float zClampedRotationMin;
+    private Vector2 playerRightDirection;
+    private Vector2 playerLeftDirection;
     Mouse mouse => Mouse.current;
     Camera cam;
     private void Awake()
@@ -18,6 +20,7 @@ public class LightRotationController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(new Vector2(0.98319522f, -0.78043041f).normalized);
         rotStep = rotationSpeed * Time.deltaTime;
         MathHell();
         FollowMouse();
@@ -30,12 +33,14 @@ public class LightRotationController : MonoBehaviour
         
         
         float playerFacingDegrees = (moveDir - 1) * 45f -180;
-        Vector2 playerFacingDirection = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * playerFacingDegrees), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees));
-        Vector2 playerRightDirection = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * playerFacingDegrees + 90), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees + 90));
-        Vector2 playerLeftDirection = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * playerFacingDegrees - 90), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees - 90));
+        Vector2 playerFacingDirection = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * playerFacingDegrees), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees)).normalized;
+
         float difference = Vector3.Dot(directionFromPlayerToMouse, playerFacingDirection);
         float differenceRight = Vector3.Dot(directionFromPlayerToMouse, playerRightDirection);
         float differenceLeft = Vector3.Dot(directionFromPlayerToMouse, playerLeftDirection);
+            playerRightDirection = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * playerFacingDegrees + 90), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees + 90)).normalized;
+            playerLeftDirection = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * playerFacingDegrees - 90), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees - 90)).normalized;
+
         if (moveDir == 0)
         {
             transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(Quaternion.LookRotation(transform.forward, directionFromPlayerToMouse).eulerAngles), rotStep);
@@ -46,15 +51,13 @@ public class LightRotationController : MonoBehaviour
 
             if (differenceRight >= differenceLeft) 
             {
-                Vector2 rightDir = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * zClampedRotationMax), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees));
-                transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(Quaternion.LookRotation(transform.forward, rightDir).eulerAngles), rotStep);
-                Debug.Log(rightDir);
+               Vector2 rightDir = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * zClampedRotationMax), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees)).normalized;
+               transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(Quaternion.LookRotation(transform.forward, rightDir).eulerAngles), rotStep);
             }
             else 
             {
-                Vector2 leftDir = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * zClampedRotationMin), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees));
-                transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(Quaternion.LookRotation(transform.forward, leftDir).eulerAngles), rotStep);
-                Debug.Log(leftDir);
+               Vector2 leftDir = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * zClampedRotationMin), -Mathf.Cos(Mathf.Deg2Rad * playerFacingDegrees)).normalized;
+               transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(Quaternion.LookRotation(transform.forward, leftDir).eulerAngles), rotStep);
             }
         }
         else transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(Quaternion.LookRotation(transform.forward, directionFromPlayerToMouse).eulerAngles), rotStep);

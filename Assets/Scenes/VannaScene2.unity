@@ -4233,8 +4233,8 @@ MonoBehaviour:
   animationFPS: 0.25
   nSpriteArray:
   - {fileID: -7882083370566787260, guid: e4f7606511a30304f8c5874db82c5420, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5017846872658167477, guid: 48d9825ead8477b4c922ff8968b4e76b, type: 3}
+  - {fileID: 1204838569894273467, guid: 48d9825ead8477b4c922ff8968b4e76b, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   sSpriteArray:

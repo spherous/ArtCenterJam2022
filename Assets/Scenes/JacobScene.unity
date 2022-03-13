@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalLight: {fileID: 662774177}
   gameManager: {fileID: 626010294}
-  cycleDuration: 10
+  cycleDuration: 300
   duskDawnIntensity: 0.33
   midnightIntensity: 0.005
   cycle: 1
@@ -3410,11 +3410,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111026, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.4
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111026, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.8
+      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111026, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3449,6 +3449,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
+      propertyPath: Style
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 860441660}
@@ -3456,6 +3460,14 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 626010294}
+    - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
+      propertyPath: SpiralAmplitutdeX
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
+      propertyPath: SpiralAmplitutdeY
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111039, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: m_Name
       value: Enemy

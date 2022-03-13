@@ -18,8 +18,8 @@ public class EnemyAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetFloat("Horizontal", enemy.velocity.y);
-        animator.SetFloat("Vertical", enemy.velocity.x);
+        animator.SetFloat("Horizontal", enemy.velocity.x);
+        animator.SetFloat("Vertical", enemy.velocity.y);
         animator.SetFloat("Speed", enemy.velocity.sqrMagnitude);
     }
 }

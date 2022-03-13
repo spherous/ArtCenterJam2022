@@ -28,8 +28,8 @@ public class EnemySpawner : MonoBehaviour
             y = Random.Range(MinY, MaxY);
             Transform t = Instantiate(enemyPrefab, new Vector3(x, y, 0), Quaternion.identity);
             t.GetComponent<Enemy>().enemyType = (Emotions.Emotion) Random.Range(1, 4);
+            t.gameObject.SetActive(true);
         }
-
     }
 
     // Update is called once per frame

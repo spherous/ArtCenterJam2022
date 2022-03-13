@@ -59,6 +59,10 @@ public class Enemy : MonoBehaviour
                 animationObject = transform.GetChild(child);
             }
         }
+        if (animationObject == null) {
+            Destroy(gameObject);
+                return;
+        }
         animationObject.gameObject.SetActive(true);
         enemyAnimation = animationObject.GetComponent<EnemyAnimation>();
         enemyAudioSource = animationObject.GetComponent<AudioSource>();
@@ -83,7 +87,6 @@ public class Enemy : MonoBehaviour
                 if ((transform.position - Player.position).magnitude < 20)
                 {
                     Style = EnemyMovement.FollowPlayer;
-                    //enemyAudioSource.gameObject.SetActive(true);
                     enemyAudioSource.Play();
                 }
                 break;
@@ -118,7 +121,6 @@ public class Enemy : MonoBehaviour
                 if (LightAccumulation <= 0) Style = EnemyMovement.Spiral;
                 break;
         }
-        Debug.DrawLine(transform.position, Player.position, Color.red);
 
         // Attack
         if ((transform.position - Player.position).magnitude < 4)
@@ -143,6 +145,7 @@ public class Enemy : MonoBehaviour
         else
             enemyAnimation.Attack(false);
 
+        //Debug.DrawLine(transform.position, Player.position, Color.red);
         //Debug.DrawLine(transform.position, transform.position + velocity, Color.red);
         move_last = move;
     }

@@ -2434,7 +2434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19cfcecb83dd3f94d98dd4a03a330899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 860441660}
+  LanternLight: {fileID: 1101906469}
   arc: 45
   rays: 5
   distance: 5
@@ -2490,6 +2490,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
+      propertyPath: Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 860441660}
@@ -2501,13 +2505,21 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 626010294}
+    - target: {fileID: 5856142505213111036, guid: fcc7977c985cc724484132879e75384d, type: 3}
+      propertyPath: LightThreshold
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111039, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5856142505213111039, guid: fcc7977c985cc724484132879e75384d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9026212529743401973, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9026212529743401973, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: selfTransform

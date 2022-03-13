@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class EnemyDetect : MonoBehaviour
 {
-    public Transform player;
+    public Transform LanternLight;
     public float arc = 45;
     public int rays = 5;
     public float distance = 5;
@@ -17,7 +17,7 @@ public class EnemyDetect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerScript = player.GetComponent<Player>();
+        playerScript = LanternLight.GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class EnemyDetect : MonoBehaviour
 
         for (int ray = 0; ray < rays; ray++)
         {
-            Vector2 direction = (Vector2)player.transform.up;
+            Vector2 direction = (Vector2)LanternLight.transform.up;
             Vector2 fan = Quaternion.Euler(0, 0, (float)(ray - ((float)rays / 2.0f)) * (arc / rays)) * direction;
 
             //Debug.DrawLine(player.position, ((Vector2)player.position + (fan * distance)), Color.blue);
@@ -41,17 +41,17 @@ public class EnemyDetect : MonoBehaviour
 
             RaycastHit hit;
             // Does the ray intersect any objects excluding the player layer
-            if (Physics.Raycast(player.position, fan, out hit, distance, layerMask))
+            if (Physics.Raycast(LanternLight.position, fan, out hit, distance, layerMask))
             {
                 var script = hit.transform.GetComponent<Enemy>();
                 if (script != null) ((Enemy)script).LightAccumulation+=2;
 
-                Debug.DrawRay(player.position, fan * hit.distance, Color.yellow);
+                Debug.DrawRay(LanternLight.position, fan * hit.distance, Color.yellow);
                 //Debug.Log("Did Hit");
             }
             else
             {
-                Debug.DrawRay(player.position, fan * distance, Color.white);
+                Debug.DrawRay(LanternLight.position, fan * distance, Color.white);
             }
 
         }

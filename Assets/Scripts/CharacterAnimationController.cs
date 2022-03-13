@@ -23,26 +23,32 @@ public class CharacterAnimationController : MonoBehaviour
 
     private void Update()
     {
-        rotation = lightRotator.rotation.eulerAngles.z -180;
-        Debug.Log(rotation);
+        rotation = lightRotator.rotation.eulerAngles.z - 180;
         horizontalInput = movementController.horizontalInput;
         verticalInput = movementController.verticalInput;
 
-        if (verticalInput > 0 && horizontalInput > -0.5 && horizontalInput < 0.5) { spriteRenderer.sprite = nSpriteArray[0];}
-        if (verticalInput < 0 && horizontalInput > -0.5 && horizontalInput < 0.5) { spriteRenderer.sprite = sSpriteArray[0];}
-        if (horizontalInput > 0 && verticalInput > -0.5 && verticalInput < 0.5) { spriteRenderer.sprite = eSpriteArray[0];}
-        if (horizontalInput < 0 && verticalInput > -0.5 && verticalInput < 0.5) { spriteRenderer.sprite = wSpriteArray[0];}
-        if (horizontalInput > 0 && verticalInput > 0) { spriteRenderer.sprite = neSpriteArray[0];}
-        if (horizontalInput > 0 && verticalInput < 0) { spriteRenderer.sprite = seSpriteArray[0];}
-        if (horizontalInput < 0 && verticalInput > 0) { spriteRenderer.sprite = nwSpriteArray[0];}
-        if (horizontalInput < 0 && verticalInput < 0) { spriteRenderer.sprite = swSpriteArray[0];}
+        if (verticalInput > 0 && horizontalInput > -0.5 && horizontalInput < 0.5) { spriteRenderer.sprite = nSpriteArray[0]; 
+            lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x,lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, -22.5f, 22.6f)); }
+        if (verticalInput < 0 && horizontalInput > -0.5 && horizontalInput < 0.5) { spriteRenderer.sprite = sSpriteArray[0];
+            /*lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, -22.5f, 22.6f));*/ }
+        if (horizontalInput > 0 && verticalInput > -0.5 && verticalInput < 0.5) { spriteRenderer.sprite = eSpriteArray[0]; 
+            lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, -112.5f, -67.6f)); }
+        if (horizontalInput < 0 && verticalInput > -0.5 && verticalInput < 0.5) { spriteRenderer.sprite = wSpriteArray[0]; 
+            lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, 67.6f, 112.5f)); }
+        if (horizontalInput > 0 && verticalInput > 0) { spriteRenderer.sprite = neSpriteArray[0]; 
+            lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, -67.6f , -22.5f)); }
+        if (horizontalInput > 0 && verticalInput < 0) { spriteRenderer.sprite = seSpriteArray[0]; 
+            lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, -157.5f , -112.6f)); }
+        if (horizontalInput < 0 && verticalInput > 0) { spriteRenderer.sprite = nwSpriteArray[0]; 
+            lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, 22.6f, 67.5f)); }
+        if (horizontalInput < 0 && verticalInput < 0) { spriteRenderer.sprite = swSpriteArray[0]; 
+            lightRotator.rotation = Quaternion.Euler(lightRotator.rotation.x, lightRotator.rotation.y, Mathf.Clamp(lightRotator.rotation.z, 112.6f, 157.5f)); }
         if (horizontalInput > -0.5 && horizontalInput < 0.5 && verticalInput > -0.5 && verticalInput < 0.5)
         {
             if (rotation < 22.6 && rotation > -22.5) { spriteRenderer.sprite = sSpriteArray[0]; }
             else if (rotation < -22.6 && rotation > -67.5) { spriteRenderer.sprite = swSpriteArray[0]; }
             else if (rotation < -67.6 && rotation > -112.5) { spriteRenderer.sprite = wSpriteArray[0]; }
             else if (rotation < -112.6 && rotation > -157.5) { spriteRenderer.sprite = nwSpriteArray[0]; }
-
             else if (rotation < 67.5  && rotation > 22.6) { spriteRenderer.sprite = seSpriteArray[0]; }
             else if (rotation <  112.5 && rotation > 67.6) { spriteRenderer.sprite = eSpriteArray[0]; }
             else if (rotation < 157.5 && rotation > 112.6) { spriteRenderer.sprite = neSpriteArray[0]; }

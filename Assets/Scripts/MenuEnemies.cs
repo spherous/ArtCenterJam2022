@@ -15,9 +15,7 @@ public class MenuEnemies : MonoBehaviour
     }
     private void Update()
     {
-        //Debug.Log(globalLight.intensity);
         int i = Mathf.CeilToInt(globalLight.intensity * 100);
-        Debug.Log(i);
         if(i == 25 && goingDown)
         {
             enemies[6].FadeIn();

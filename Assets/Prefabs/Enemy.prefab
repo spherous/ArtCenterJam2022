@@ -153,6 +153,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Anger
       objectReference: {fileID: 0}
+    - target: {fileID: 5237383443843701248, guid: 5cf4d9e0e58e02540a13164839ed1fd5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5237383443843701254, guid: 5cf4d9e0e58e02540a13164839ed1fd5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -227,6 +231,10 @@ PrefabInstance:
     - target: {fileID: 4784299340779681512, guid: 1d9d06eb0b97a6c4492d18bd593bac1d, type: 3}
       propertyPath: m_Name
       value: Sadness
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784299340779681512, guid: 1d9d06eb0b97a6c4492d18bd593bac1d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4784299340779681517, guid: 1d9d06eb0b97a6c4492d18bd593bac1d, type: 3}
       propertyPath: m_RootOrder
@@ -353,6 +361,10 @@ PrefabInstance:
     - target: {fileID: 4824041700974136665, guid: 211f271f2d2c3714d921801fee793885, type: 3}
       propertyPath: m_Name
       value: Fear
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824041700974136665, guid: 211f271f2d2c3714d921801fee793885, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 211f271f2d2c3714d921801fee793885, type: 3}

@@ -7,6 +7,7 @@ public class CharacterAnimationController : MonoBehaviour
     [SerializeField] public MovementController movementController;
     [SerializeField] public LightRotationController lrc;
     [SerializeField] public Transform lightRotator;
+    public FootstepAudio footstepAudio;
     public SpriteRenderer spriteRenderer;
     private float rotation;
     private float horizontalInput;
@@ -93,6 +94,10 @@ public class CharacterAnimationController : MonoBehaviour
                         waiting = true;
                         frame++;
                         updateSprite();
+                    }
+                    if (frame == 2 || frame == 4)
+                    {
+                        footstepAudio.GroundType();
                     }
 
 

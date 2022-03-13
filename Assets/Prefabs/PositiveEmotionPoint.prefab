@@ -54,6 +54,8 @@ MonoBehaviour:
   emotion: 5
   progressBarPrefab: {fileID: 2710689733336505426, guid: 8a11b4c2a24e5a04a95adc11365e86d8, type: 3}
   emoIconPrefab: {fileID: 4065498645571018886, guid: 8de90165d1c1cbf48b1e283c134965e9, type: 3}
+  cooldownTransparency: 50
+  activeTransparency: 76
 --- !u!50 &2867641389701327853
 Rigidbody2D:
   serializedVersion: 4

@@ -13,6 +13,8 @@ public class CharacterAnimationController : MonoBehaviour
     private float verticalInput;
     private float timeCounter;
     public float animationFPS;
+    private int frame;
+    private int frameCount;
     public Sprite[] nSpriteArray;
     public Sprite[] sSpriteArray;
     public Sprite[] eSpriteArray;
@@ -31,46 +33,46 @@ public class CharacterAnimationController : MonoBehaviour
         if (verticalInput > 0 && horizontalInput > -0.5 && horizontalInput < 0.5) 
         { 
             spriteRenderer.sprite = nSpriteArray[0];
-            lrc.moveDir = 0;
+            lrc.moveDir = 1;
         }
         else if (verticalInput < 0 && horizontalInput > -0.5 && horizontalInput < 0.5) 
         { 
             spriteRenderer.sprite = sSpriteArray[0];
-            lrc.moveDir = 4;
+            lrc.moveDir = 5;
         }
         else if (horizontalInput > 0 && verticalInput > -0.5 && verticalInput < 0.5) 
         { 
             spriteRenderer.sprite = eSpriteArray[0];
-            lrc.moveDir = 2;
+            lrc.moveDir = 3;
         }
         else if (horizontalInput < 0 && verticalInput > -0.5 && verticalInput < 0.5) 
         { 
             spriteRenderer.sprite = wSpriteArray[0];
-            lrc.moveDir = 6;
+            lrc.moveDir = 7;
         }
         else if (horizontalInput > 0 && verticalInput > 0) 
         { 
             spriteRenderer.sprite = neSpriteArray[0];
-            lrc.moveDir = 1;
+            lrc.moveDir = 2;
         }
         else if (horizontalInput > 0 && verticalInput < 0) 
         { 
             spriteRenderer.sprite = seSpriteArray[0];
-            lrc.moveDir = 3;
+            lrc.moveDir = 4;
         }
         else if (horizontalInput < 0 && verticalInput > 0) 
         { 
             spriteRenderer.sprite = nwSpriteArray[0];
-            lrc.moveDir = 7;
+            lrc.moveDir = 8;
         }
         else if (horizontalInput < 0 && verticalInput < 0) 
         { 
             spriteRenderer.sprite = swSpriteArray[0];
-            lrc.moveDir = 5;
+            lrc.moveDir = 6;
         }
         else if (horizontalInput > -0.5 && horizontalInput < 0.5 && verticalInput > -0.5 && verticalInput < 0.5)
         {
-            lrc.moveDir = 8;
+            lrc.moveDir = 0;
             if (rotation < 22.6 && rotation > -22.5) { spriteRenderer.sprite = sSpriteArray[0]; }
             else if (rotation < -22.6 && rotation > -67.5) { spriteRenderer.sprite = swSpriteArray[0]; }
             else if (rotation < -67.6 && rotation > -112.5) { spriteRenderer.sprite = wSpriteArray[0]; }

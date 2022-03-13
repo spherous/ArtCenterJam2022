@@ -391,6 +391,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b6f74306942574480819ccd2158f57, type: 3}
+--- !u!4 &233519271 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5856142505213111026, guid: fcc7977c985cc724484132879e75384d, type: 3}
+  m_PrefabInstance: {fileID: 658740429}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &334107081
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,11 +996,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111026, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.58
+      value: -116.9
       objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111026, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.63
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5856142505213111026, guid: fcc7977c985cc724484132879e75384d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3213,11 +3218,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinNumOfEnemies: 5
-  MaxNumOfEnemies: 10
-  MinX: -20
-  MaxX: 20
-  MinY: -20
-  MaxY: 20
+  MaxNumOfEnemies: 50
+  MinX: -120
+  MaxX: 120
+  MinY: -60
+  MaxY: 60
+  enemyPrefab: {fileID: 233519271}
 --- !u!4 &1911824421
 Transform:
   m_ObjectHideFlags: 0

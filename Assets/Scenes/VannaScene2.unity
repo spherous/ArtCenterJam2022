@@ -4233,16 +4233,16 @@ MonoBehaviour:
   animationFPS: 0.25
   nSpriteArray:
   - {fileID: -7882083370566787260, guid: e4f7606511a30304f8c5874db82c5420, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5017846872658167477, guid: 48d9825ead8477b4c922ff8968b4e76b, type: 3}
+  - {fileID: 1204838569894273467, guid: 48d9825ead8477b4c922ff8968b4e76b, type: 3}
+  - {fileID: -5038278156396779206, guid: 48d9825ead8477b4c922ff8968b4e76b, type: 3}
+  - {fileID: -8093000451564386337, guid: 48d9825ead8477b4c922ff8968b4e76b, type: 3}
   sSpriteArray:
   - {fileID: 4230479321058393228, guid: e4f7606511a30304f8c5874db82c5420, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: -5294968517078135369, guid: 5704fe5ba2b3b004ba5d812a784517f2, type: 3}
+  - {fileID: -6390733307295209406, guid: 5704fe5ba2b3b004ba5d812a784517f2, type: 3}
+  - {fileID: 6703266054480242096, guid: 5704fe5ba2b3b004ba5d812a784517f2, type: 3}
+  - {fileID: 4764353688376815699, guid: 5704fe5ba2b3b004ba5d812a784517f2, type: 3}
   eSpriteArray:
   - {fileID: 3971529407958407876, guid: e4f7606511a30304f8c5874db82c5420, type: 3}
   - {fileID: 3198109800909143135, guid: 73152a96da5f2714ba7c0a57f9331062, type: 3}

@@ -13,14 +13,8 @@ public class MenuEnemies : MonoBehaviour
         //Debug.Log(globalLight.intensity);
         int i = Mathf.CeilToInt(globalLight.intensity * 100);
         Debug.Log(i);
-        /*if(i < 25 && i > 15)
+        /*if(i = 25)
         {
-            enemies[0].FadeOut();
-            enemies[1].FadeOut();
-            enemies[2].FadeOut();
-            enemies[3].FadeOut();
-            enemies[4].FadeOut();
-            enemies[5].FadeOut();
             enemies[6].FadeIn();
             enemies[7].FadeIn();
         }

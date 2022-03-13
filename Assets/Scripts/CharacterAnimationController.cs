@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
+
 public class CharacterAnimationController : MonoBehaviour
 {
     [SerializeField] public MovementController movementController;
@@ -79,14 +79,12 @@ public class CharacterAnimationController : MonoBehaviour
                     waiting = false;
                     if (frame >= frameCount)
                     {
-                        Debug.Log("done");
                         frame = 1;
                         started = false;
                     }
                     else
                     {
                         waiting = true;
-                        Debug.Log("why");
                         frame++;
                         updateSprite();
                     }
@@ -104,7 +102,6 @@ public class CharacterAnimationController : MonoBehaviour
     void updateSprite()
     {
 
-        Debug.Log("updating");
         if (verticalInput > 0 && horizontalInput > -0.5 && horizontalInput < 0.5)
         {
             spriteRenderer.sprite = nSpriteArray[frame];

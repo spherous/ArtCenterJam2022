@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class LightRotationController : MonoBehaviour
 {
+    GameManager gameManager;
     public float rotationSpeed;
     private float rotStep;
     public int moveDir;
@@ -15,11 +16,15 @@ public class LightRotationController : MonoBehaviour
     Camera cam;
     private void Awake()
     {
+        gameManager = GameObject.FindObjectOfType<GameManager>();
         cam = Camera.main;
     }
 
     void Update()
     {
+        if(gameManager != null && gameManager.gameOver)
+            return;
+
         Debug.Log(new Vector2(0.98319522f, -0.78043041f).normalized);
         rotStep = rotationSpeed * Time.deltaTime;
         MathHell();
@@ -27,7 +32,6 @@ public class LightRotationController : MonoBehaviour
     }
     void FollowMouse()
     {
-
         Vector3 playerScreenPosition = cam.WorldToScreenPoint(transform.position);
         Vector2 directionFromPlayerToMouse = (mouse.position.ReadValue() - (Vector2)playerScreenPosition).normalized;
         

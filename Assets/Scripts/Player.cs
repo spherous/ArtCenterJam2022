@@ -16,8 +16,9 @@ public class Player : MonoBehaviour
     public void UpdateNewEmotionEffects(List<EmotionDot> emotionDots)
     {
         float joySadnessBalance = emotionDots.Where(emo => emo.emotion == Emotion.Joy || emo.emotion == Emotion.Sadness).Sum(emo => emo.emotion.IsPositive() ? 1 : -1);
-        lanternLight.pointLightOuterRadius = Mathf.Lerp(4, 20, Mathf.Abs(Mathf.Clamp(joySadnessBalance, -10, 10) + 10) / 20);
-        if(enemyDetect != null) enemyDetect.distance = lanternLight.pointLightOuterRadius;
+        float joySadT = Mathf.Abs(Mathf.Clamp(joySadnessBalance, -10, 10) + 10) / 20;
+        lanternLight.pointLightOuterRadius = Mathf.Lerp(4, 20, joySadT);
+        if(enemyDetect != null) enemyDetect.distance = Mathf.Lerp(4, 18, joySadT);
 
         float angerLoveBalance = emotionDots.Where(emo => emo.emotion == Emotion.Anger || emo.emotion == Emotion.Love).Sum(emo => emo.emotion.IsPositive() ? 1 : -1);
         float angerLoveT = Mathf.Abs(Mathf.Clamp(angerLoveBalance, -10, 10) + 10) / 20;

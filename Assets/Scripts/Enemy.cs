@@ -38,6 +38,11 @@ public class Enemy : MonoBehaviour
     private Transform animationObject;
     private EnemyAnimation enemyAnimation;
     private AudioSource enemyAudioSource;
+    
+    private void Awake() {
+        Player = GameObject.FindObjectOfType<Player>().transform;
+        gameManager = GameObject.FindObjectOfType<GameManager>();    
+    }
 
     // Start is called before the first frame update
     void Start()

@@ -19,10 +19,13 @@ public class Enemy : MonoBehaviour
         SpiralWait
     }
 
+
+    public Transform Player;
+    public GameManager gameManager;
+
     public EnemyType enemyType;
     public EnemyMovement Style;
 
-    public Transform Player;
     public float Speed = 1;
     public float SpiralSpeedX = 1;
     public float SpiralSpeedY = 1;
@@ -49,8 +52,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.gameOver) return;
+
         Vector3 move = Vector3.zero;
         Vector3 direction = Vector3.Normalize(transform.position - Player.position);
+
 
         if (LightAccumulation > LightClamp) LightAccumulation = LightClamp;
         if (LightAccumulation > 0)

@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     {
         float joySadnessBalance = emotionDots.Where(emo => emo.emotion == Emotion.Joy || emo.emotion == Emotion.Sadness).Sum(emo => emo.emotion.IsPositive() ? 1 : -1);
         lanternLight.pointLightOuterRadius = Mathf.Lerp(4, 20, Mathf.Abs(Mathf.Clamp(joySadnessBalance, -10, 10) + 10) / 20);
-        enemyDetect.distance = lanternLight.pointLightOuterRadius;
+        if(enemyDetect != null) enemyDetect.distance = lanternLight.pointLightOuterRadius;
 
         float angerLoveBalance = emotionDots.Where(emo => emo.emotion == Emotion.Anger || emo.emotion == Emotion.Love).Sum(emo => emo.emotion.IsPositive() ? 1 : -1);
         float angerLoveT = Mathf.Abs(Mathf.Clamp(angerLoveBalance, -10, 10) + 10) / 20;

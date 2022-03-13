@@ -59,7 +59,8 @@ public class ScreenShake : MonoBehaviour
             shakeCount = 0; 
             ReturnToPos();
             origPosSet = false;
-            return; }
+            return; 
+        }
         else { waiting = true;}
 
     }

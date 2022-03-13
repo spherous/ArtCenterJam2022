@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
 
     public bool gameOver {get; private set;} = false;
 
+    [SerializeField] private AudioSource source;
+    public AudioClip badSound;
+
     private void Awake() {
         spawnEmotionAtTime = Time.timeSinceLevelLoad + emotionSpawnSpeed;
         UpdateNewEmotionEffects();
@@ -56,6 +59,9 @@ public class GameManager : MonoBehaviour
     {
         if(gameOver)
             return;
+
+        if(!emotion.IsPositive())
+            source.PlayOneShot(badSound);
             
         EmotionDot dot = Instantiate(emotionDotPrefab, player.transform.position, Quaternion.identity, player.transform);
         emotionDots.Add(dot);

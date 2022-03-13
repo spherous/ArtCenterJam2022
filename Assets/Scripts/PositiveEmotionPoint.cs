@@ -11,6 +11,11 @@ public class PositiveEmotionPoint : MonoBehaviour
     [SerializeField] private SpriteRenderer circle;
     [SerializeField] private CircleCollider2D circleCollider;
     [SerializeField] private RectTransform canvas;
+    [SerializeField] private AudioSource audioSource;
+    public AudioClip initiatedSound;
+    public AudioClip failSound;
+    public AudioClip successSound;    
+
     public float activationRadius;
     public float activationDelay;
     private float? ellapsedActivationTime;
@@ -26,7 +31,7 @@ public class PositiveEmotionPoint : MonoBehaviour
     public float activeTransparency;
 
     private void Awake() {
-        canvas = FindObjectOfType<Canvas>().GetComponent<RectTransform>();
+        // canvas = FindObjectOfType<Canvas>().GetComponent<RectTransform>();
         gameManager = FindObjectOfType<GameManager>();
         Color emotionColor = emotion.GetColor();
         circle.color = new Color(emotionColor.r, emotionColor.g, emotionColor.b, activeTransparency/255f);
@@ -54,7 +59,10 @@ public class PositiveEmotionPoint : MonoBehaviour
 
     private void CompleteEmotional()
     {
+        audioSource.Stop();
         progressBar?.Kill();
+        if(emotion.IsPositive())
+            audioSource.PlayOneShot(successSound);
         gameManager.Emotional(emotion);
         ellapsedActivationTime = null;
         StartCooldown();
@@ -91,6 +99,8 @@ public class PositiveEmotionPoint : MonoBehaviour
                 progressBar = Instantiate(progressBarPrefab, canvas.transform);
                 progressBar.TrackProgress(this);
                 ellapsedActivationTime = 0;
+                audioSource.PlayOneShot(initiatedSound);
+                audioSource.Play();
             }
         }
     }
@@ -101,6 +111,11 @@ public class PositiveEmotionPoint : MonoBehaviour
             
         if(other.transform.root.gameObject.TryGetComponent<Player>(out Player player))
         {
+            if(ellapsedActivationTime.HasValue && ellapsedActivationTime.Value < activationDelay)
+            {
+                audioSource.Stop();
+                audioSource.PlayOneShot(failSound);
+            }
             Debug.Log("Exit");
             ellapsedActivationTime = null;
             progressBar?.Kill();

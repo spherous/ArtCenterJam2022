@@ -20,16 +20,16 @@ public class Enemy : MonoBehaviour
     public Emotions.Emotion enemyType;
     public EnemyMovement Style;
 
-    public float Speed = 1;
+
     public float SpiralSpeedX = 1;
     public float SpiralSpeedY = 1;
     public float SpiralAmplitutdeX;
     public float SpiralAmplitutdeY;
 
-    public int LightAccumulation = 0;
-    public int LightThreshold = 100;
-    public int LightClamp = 200;
-
+    private int _lightaccumulation;
+    public int LightAccumulation {get => _lightaccumulation; set{
+        _lightaccumulation = value * enemyAnimation.lightMultiplier;
+    }}
     private float theta = 0;
 
     private Vector3 inital_position;
@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
     private Transform animationObject;
     private EnemyAnimation enemyAnimation;
     private AudioSource enemyAudioSource;
+    private float attackCooldownTimer;
     
     private void Awake() {
         Player = GameObject.FindObjectOfType<Player>().transform;
@@ -71,6 +72,7 @@ public class Enemy : MonoBehaviour
         animationObject.gameObject.SetActive(true);
         enemyAnimation = animationObject.GetComponent<EnemyAnimation>();
         enemyAudioSource = animationObject.GetComponent<AudioSource>();
+        attackCooldownTimer = Time.timeSinceLevelLoad + enemyAnimation.attackCooldown;
     }
 
     // Update is called once per frame
@@ -82,9 +84,9 @@ public class Enemy : MonoBehaviour
         Vector3 direction = Vector3.Normalize(transform.position - Player.position);
 
 
-        if (LightAccumulation > LightClamp) LightAccumulation = LightClamp;
+        if (LightAccumulation > enemyAnimation.maxLight) LightAccumulation = enemyAnimation.maxLight;
         if (LightAccumulation > 0)
-            LightAccumulation--;
+            LightAccumulation -= enemyAnimation.lightRecoverySpeed;
 
         switch (Style)
         {
@@ -96,13 +98,13 @@ public class Enemy : MonoBehaviour
                 }
                 break;
             case EnemyMovement.FollowPlayer:
-                move = direction * -Speed * Time.deltaTime;
+                move = direction * -enemyAnimation.moveSpeed * Time.deltaTime;
                 transform.position += move;
-                if (LightAccumulation > LightThreshold) Style = EnemyMovement.RunFromPlayer;
+                if (LightAccumulation > enemyAnimation.lightThreshold) Style = EnemyMovement.RunFromPlayer;
                 velocity = (move).normalized;
                 break;
             case EnemyMovement.RunFromPlayer:
-                move = direction * Speed * Time.deltaTime;
+                move = direction * enemyAnimation.moveSpeed * Time.deltaTime;
                 transform.position += move;
                 if (LightAccumulation <= 0) Style = EnemyMovement.FollowPlayer;
                 velocity = (move).normalized;
@@ -119,7 +121,7 @@ public class Enemy : MonoBehaviour
                 theta += Time.deltaTime;
                 move = new Vector2(SpiralAmplitutdeX * Mathf.Sin(theta * SpiralSpeedX), SpiralAmplitutdeY * Mathf.Cos(theta * SpiralSpeedY));
                 transform.position = inital_position + move;
-                if (LightAccumulation > LightThreshold) Style = EnemyMovement.SpiralWait;
+                if (LightAccumulation > enemyAnimation.lightThreshold) Style = EnemyMovement.SpiralWait;
                 velocity = (move - move_last).normalized;
                 break;
             case EnemyMovement.SpiralWait:
@@ -128,27 +130,31 @@ public class Enemy : MonoBehaviour
         }
 
         // Attack
-        if ((transform.position - Player.position).magnitude < 4)
+        if(Time.timeSinceLevelLoad >= attackCooldownTimer)
         {
-            enemyAnimation.Attack(true);
-            if ((transform.position - Player.position).magnitude < 3)
+            if ((transform.position - Player.position).magnitude < 4)
             {
-                gameManager.Emotional(enemyType);
-                switch(Style)
+                enemyAnimation.Attack(true);
+                if ((transform.position - Player.position).magnitude < 3)
                 {
-                    case EnemyMovement.FollowPlayer:
-                        Style = EnemyMovement.RunFromPlayer;
-                        LightAccumulation = LightClamp;
-                        break;
-                    case EnemyMovement.Spiral:
-                        Style = EnemyMovement.SpiralWait;
-                        LightAccumulation = LightClamp;
-                        break;
+                    gameManager.Emotional(enemyType);
+                    switch(Style)
+                    {
+                        case EnemyMovement.FollowPlayer:
+                            Style = EnemyMovement.RunFromPlayer;
+                            LightAccumulation = enemyAnimation.maxLight;
+                            break;
+                        case EnemyMovement.Spiral:
+                            Style = EnemyMovement.SpiralWait;
+                            LightAccumulation = enemyAnimation.maxLight;
+                            break;
+                    }
                 }
             }
+            else
+                enemyAnimation.Attack(false);
+            attackCooldownTimer = Time.timeSinceLevelLoad + enemyAnimation.attackCooldown;
         }
-        else
-            enemyAnimation.Attack(false);
 
         //Debug.DrawLine(transform.position, Player.position, Color.red);
         //Debug.DrawLine(transform.position, transform.position + velocity, Color.red);

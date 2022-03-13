@@ -7,6 +7,12 @@ public class EnemyAnimation : MonoBehaviour
     public Animator animator;
     public Transform player;
 
+    public float attackCooldown;
+    public float moveSpeed;
+    public int maxLight;
+    public int lightMultiplier;
+    public int lightThreshold;
+    public int lightRecoverySpeed;
     private Enemy enemy;
 
     // Start is called before the first frame update

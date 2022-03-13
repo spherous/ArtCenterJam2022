@@ -44,7 +44,7 @@ public class EnemyDetect : MonoBehaviour
             if (Physics.Raycast(LanternLight.position, fan, out hit, distance, layerMask))
             {
                 var script = hit.transform.GetComponent<Enemy>();
-                if (script != null) ((Enemy)script).LightAccumulation+=2;
+                if (script != null) script.LightAccumulation+=2;
 
                 Debug.DrawRay(LanternLight.position, fan * hit.distance, Color.yellow);
                 //Debug.Log("Did Hit");

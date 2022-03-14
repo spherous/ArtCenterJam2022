@@ -35956,7 +35956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 860441660}
-  followSpeed: 0.2
+  followSpeed: 0.1
 --- !u!4 &2007783727
 Transform:
   m_ObjectHideFlags: 0

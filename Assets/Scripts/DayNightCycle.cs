@@ -26,7 +26,7 @@ public class DayNightCycle : MonoBehaviour
         if(gameManager != null && gameManager.gameOver)
             return;
 
-        ellapsedDuration += Time.deltaTime;
+        ellapsedDuration = Time.timeSinceLevelLoad;
         float startVal = becomingDay ? midnightIntensity : duskDawnIntensity;
         float endVal = becomingDay ? duskDawnIntensity : midnightIntensity;
 

@@ -9,7 +9,7 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private Light2D globalLight;
     [SerializeField] private GameManager gameManager;
     public float cycleDuration;
-    private float ellapsedDuration;
+    private float elapsedDuration;
 
     private bool becomingDay = false;
 
@@ -26,23 +26,23 @@ public class DayNightCycle : MonoBehaviour
         if(gameManager != null && gameManager.gameOver)
             return;
 
-        ellapsedDuration = Time.timeSinceLevelLoad;
+        elapsedDuration = Time.timeSinceLevelLoad;
         float startVal = becomingDay ? midnightIntensity : duskDawnIntensity;
         float endVal = becomingDay ? duskDawnIntensity : midnightIntensity;
 
-        float t = ellapsedDuration/cycleDuration;
+        float t = elapsedDuration/cycleDuration;
 
         globalLight.intensity = Mathf.Clamp01(Mathf.Lerp(startVal, endVal, t));
         onTimeChange?.Invoke(becomingDay ? t / 2 + 0.5f : t / 2);
 
         if(globalLight.intensity == midnightIntensity && !becomingDay)
         {
-            ellapsedDuration = 0;
+            elapsedDuration = 0;
             becomingDay = true;
         }
         else if(globalLight.intensity == duskDawnIntensity && becomingDay)
         {
-            ellapsedDuration = 0;
+            elapsedDuration = 0;
             becomingDay = false;
             gameManager?.GameOver(EndGameStatus.Win);
         }        

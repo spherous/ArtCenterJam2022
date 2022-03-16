@@ -18,7 +18,7 @@ public class PositiveEmotionPoint : MonoBehaviour
 
     public float activationRadius;
     public float activationDelay;
-    private float? ellapsedActivationTime;
+    private float? elapsedActivationTime;
     public float cooldownDuration;
     private float? offcooldownAtTime;
     public Emotion emotion;
@@ -45,12 +45,12 @@ public class PositiveEmotionPoint : MonoBehaviour
         if(gameManager.gameOver)
             return;
 
-        if(ellapsedActivationTime.HasValue && ellapsedActivationTime.Value >= activationDelay)
+        if(elapsedActivationTime.HasValue && elapsedActivationTime.Value >= activationDelay)
             CompleteEmotional();
-        else if(ellapsedActivationTime.HasValue)
+        else if(elapsedActivationTime.HasValue)
         {
-            ellapsedActivationTime = ellapsedActivationTime.Value + Time.deltaTime;
-            onActivationStep?.Invoke(ellapsedActivationTime.Value/activationDelay);
+            elapsedActivationTime = elapsedActivationTime.Value + Time.deltaTime;
+            onActivationStep?.Invoke(elapsedActivationTime.Value/activationDelay);
         }
 
         if(offcooldownAtTime.HasValue && Time.timeSinceLevelLoad > offcooldownAtTime.Value)
@@ -64,7 +64,7 @@ public class PositiveEmotionPoint : MonoBehaviour
         if(emotion.IsPositive())
             audioSource.PlayOneShot(successSound);
         gameManager.Emotional(emotion);
-        ellapsedActivationTime = null;
+        elapsedActivationTime = null;
         StartCooldown();
     }
 
@@ -98,7 +98,7 @@ public class PositiveEmotionPoint : MonoBehaviour
                 Debug.Log("Enter");
                 progressBar = Instantiate(progressBarPrefab, canvas.transform);
                 progressBar.TrackProgress(this);
-                ellapsedActivationTime = 0;
+                elapsedActivationTime = 0;
                 audioSource.PlayOneShot(initiatedSound);
                 audioSource.Play();
             }
@@ -111,13 +111,13 @@ public class PositiveEmotionPoint : MonoBehaviour
             
         if(other.transform.root.gameObject.TryGetComponent<Player>(out Player player))
         {
-            if(ellapsedActivationTime.HasValue && ellapsedActivationTime.Value < activationDelay)
+            if(elapsedActivationTime.HasValue && elapsedActivationTime.Value < activationDelay)
             {
                 audioSource.Stop();
                 audioSource.PlayOneShot(failSound);
             }
             Debug.Log("Exit");
-            ellapsedActivationTime = null;
+            elapsedActivationTime = null;
             progressBar?.Kill();
         }
     }

@@ -7243,7 +7243,7 @@ GameObject:
   - component: {fileID: 425153432}
   - component: {fileID: 425153431}
   m_Layer: 8
-  m_Name: pave,emt (2)
+  m_Name: pavement
   m_TagString: Concrete
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11005,7 +11005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4881684723977612404, guid: b360ba3beddf88841a8afd9713caf4f0, type: 3}
       propertyPath: m_SortingOrder
-      value: 20
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8732658395508469131, guid: b360ba3beddf88841a8afd9713caf4f0, type: 3}
       propertyPath: m_Name
@@ -11669,7 +11669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalLight: {fileID: 662774177}
   gameManager: {fileID: 626010294}
-  cycleDuration: 300
+  cycleDuration: 10
   duskDawnIntensity: 0.33
   midnightIntensity: 0.005
   cycle: 1
@@ -21016,7 +21016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4881684723977612404, guid: b360ba3beddf88841a8afd9713caf4f0, type: 3}
       propertyPath: m_SortingOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8732658395508469131, guid: b360ba3beddf88841a8afd9713caf4f0, type: 3}
       propertyPath: m_Name
@@ -33626,7 +33626,7 @@ GameObject:
   - component: {fileID: 1880833705}
   - component: {fileID: 1880833704}
   m_Layer: 8
-  m_Name: pave,emt (1)
+  m_Name: pavement (1)
   m_TagString: Concrete
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36594,7 +36594,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 763521430903540649, guid: ba34391438d5e794ea2add6e9deaaabd, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 3465249834382445142, guid: ba34391438d5e794ea2add6e9deaaabd, type: 3}
       propertyPath: m_Name
@@ -37068,7 +37068,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 399831888261919743, guid: 746e269ed0adf38498239a6af306ff5f, type: 3}
       propertyPath: m_SortingOrder
-      value: 17
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4540723626194121216, guid: 746e269ed0adf38498239a6af306ff5f, type: 3}
       propertyPath: m_Name
@@ -37198,7 +37198,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 763521430903540649, guid: ba34391438d5e794ea2add6e9deaaabd, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 3465249834382445142, guid: ba34391438d5e794ea2add6e9deaaabd, type: 3}
       propertyPath: m_Name

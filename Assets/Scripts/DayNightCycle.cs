@@ -37,7 +37,7 @@ public class DayNightCycle : MonoBehaviour
         float startVal = becomingDay ? midnightIntensity : duskDawnIntensity;
         float endVal = becomingDay ? duskDawnIntensity : midnightIntensity;
 
-        float cyclePercent = elapsedCycleDuration/cycleDuration;
+        float cyclePercent = getCyclePercent();
 
         globalLight.intensity = Mathf.Clamp01(Mathf.Lerp(startVal, endVal, cyclePercent));
         onTimeChange?.Invoke(becomingDay ? (cyclePercent / numberOfCycles) + (1 / numberOfCycles) : (cyclePercent / numberOfCycles) );
@@ -53,5 +53,10 @@ public class DayNightCycle : MonoBehaviour
             becomingDay = false;
             gameManager?.GameOver(EndGameStatus.Win);
         }        
+    }
+
+    public float getCyclePercent()
+    {
+        return elapsedCycleDuration / cycleDuration;
     }
 }

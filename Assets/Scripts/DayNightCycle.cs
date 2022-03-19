@@ -42,12 +42,12 @@ public class DayNightCycle : MonoBehaviour
         globalLight.intensity = Mathf.Clamp01(Mathf.Lerp(startVal, endVal, cyclePercent));
         onTimeChange?.Invoke(becomingDay ? (cyclePercent / numberOfCycles) + (1 / numberOfCycles) : (cyclePercent / numberOfCycles) );
 
-        if( (globalLight.intensity == midnightIntensity) && !becomingDay)
+        if(!becomingDay && (cyclePercent>=1.0f) )
         {
             cycleStartTime = Time.time; // elapsedCycleDuration = 0;
             becomingDay = true;
         }
-        else if( (globalLight.intensity == duskDawnIntensity) && becomingDay)
+        else if( becomingDay && (cyclePercent >= 1.0f) )
         {
             cycleStartTime = Time.time; // elapsedCycleDuration = 0;
             becomingDay = false;

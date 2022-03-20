@@ -9,6 +9,7 @@ public class SceneTransition : MonoBehaviour
     private bool transitioning = false;
     private TransitionMode mode;
     private string toLoad;
+    private float cycleStartTime;
     private void Awake() 
     {
         SceneTransition[] existingSTs = GameObject.FindObjectsOfType<SceneTransition>();
@@ -20,11 +21,14 @@ public class SceneTransition : MonoBehaviour
         group.blocksRaycasts = false;
         DontDestroyOnLoad(gameObject);
     } 
-
+    private void Start()
+    {
+        cycleStartTime = Time.time;
+    }
     private void Update() {
         if(transitioning)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime = Time.time - cycleStartTime;
             group.alpha = Mathf.Lerp(mode == TransitionMode.In ? 1 : 0, mode == TransitionMode.In ? 0 : 1, elapsedTime / transitionTime);
             if(elapsedTime >= transitionTime && mode == TransitionMode.Out)
             {
@@ -43,7 +47,7 @@ public class SceneTransition : MonoBehaviour
 
     private void Flip(Scene arg0, Scene arg1)
     {
-        elapsedTime = 0;
+        cycleStartTime = Time.time;
         mode = TransitionMode.In;
         SceneManager.activeSceneChanged -= Flip;
     }
@@ -54,7 +58,7 @@ public class SceneTransition : MonoBehaviour
             return;
         toLoad = sceneName;
         mode = TransitionMode.Out;
-        elapsedTime = 0;
+        cycleStartTime = Time.time;
         transitioning = true;
         group.interactable = true;
         group.blocksRaycasts = true;

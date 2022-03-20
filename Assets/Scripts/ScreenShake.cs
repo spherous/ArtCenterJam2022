@@ -15,31 +15,29 @@ public class ScreenShake : MonoBehaviour
     private Vector2 sdcfv;
     Vector2 originalPos;
     Vector2 oldShakePos;
-    
+    private float cycleStartTime;
+
     private void Start()
     {
         origPosSet = false;
         waiting = false;
         shakeCount = 0;
         shakeTimer = Time.timeSinceLevelLoad + shakeRate;
+        cycleStartTime = Time.time;
     }
     private void Update()
     {
-
-
-        
         if (waiting)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime = Time.time - cycleStartTime;
             transform.localPosition = Vector3.Lerp(oldShakePos, sdcfv, elapsedTime / shakeRate);
             if (Time.timeSinceLevelLoad >= shakeTimer)
             {
-                
                 shakeCount++;
                 oldShakePos = transform.localPosition;
                 sdcfv = GetShakePos();
                 Shake();
-                elapsedTime = 0f;
+                cycleStartTime = Time.time;
             }
         }
     }

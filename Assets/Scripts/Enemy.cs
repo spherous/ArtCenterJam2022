@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public enum EnemyState
+    {
+        enemyStart,
+        enemyNormalBehaviour,
+        enemyScared,
+        enemyGuard,
+        enemyWait
+    }
     public enum EnemyMovement
     {
-        FollowStart,
-        FollowPlayer,
-        RunFromPlayer,
-        SpiralStart,
+        Follow,
         Spiral,
-        SpiralWait
     }
 
     public Transform Player;
     public GameManager gameManager;
 
     public Emotions.Emotion enemyType;
-    public EnemyMovement Style;
+    public EnemyMovement movementStyle;
+    public EnemyState enemyState = EnemyState.enemyStart;
 
 
     public float SpiralSpeedX = 1;
@@ -88,44 +93,61 @@ public class Enemy : MonoBehaviour
         if (LightAccumulation > 0)
             LightAccumulation -= enemyAnimation.lightRecoverySpeed;
 
-        switch (Style)
+        switch (movementStyle)
         {
-            case EnemyMovement.FollowStart:
-                if ((transform.position - Player.position).magnitude < 20)
+            case EnemyMovement.Follow:
+                switch(enemyState)
                 {
-                    Style = EnemyMovement.FollowPlayer;
-                    enemyAudioSource.Play();
-                }
-                break;
-            case EnemyMovement.FollowPlayer:
-                move = direction * -enemyAnimation.moveSpeed * Time.deltaTime;
-                transform.position += move;
-                if (LightAccumulation > enemyAnimation.lightThreshold) Style = EnemyMovement.RunFromPlayer;
-                velocity = (move).normalized;
-                break;
-            case EnemyMovement.RunFromPlayer:
-                move = direction * enemyAnimation.moveSpeed * Time.deltaTime;
-                transform.position += move;
-                if (LightAccumulation <= 0) Style = EnemyMovement.FollowPlayer;
-                velocity = (move).normalized;
-                break;
-
-            case EnemyMovement.SpiralStart:
-                if ((transform.position - Player.position).magnitude < 20)
-                {
-                    Style = EnemyMovement.FollowPlayer;
-                    enemyAudioSource.Play();
+                    case EnemyState.enemyStart:
+                        if ((transform.position - Player.position).magnitude < 20)
+                        {
+                            enemyState = EnemyState.enemyNormalBehaviour;
+                            enemyAudioSource.Play();
+                        }
+                        break;
+                    case EnemyState.enemyNormalBehaviour:
+                        move = direction * -enemyAnimation.moveSpeed * Time.deltaTime;
+                        transform.position += move;
+                        if (LightAccumulation > enemyAnimation.lightThreshold) enemyState = EnemyState.enemyScared;
+                        velocity = (move).normalized;
+                        break;
+                    case EnemyState.enemyScared:
+                        move = direction * enemyAnimation.moveSpeed * Time.deltaTime;
+                        transform.position += move;
+                        if (LightAccumulation <= 0) enemyState = EnemyState.enemyNormalBehaviour;
+                        velocity = (move).normalized;
+                        break;
+                    case EnemyState.enemyGuard:
+                    case EnemyState.enemyWait:
+                        enemyState = EnemyState.enemyNormalBehaviour;
+                        break;
                 }
                 break;
             case EnemyMovement.Spiral:
-                theta += Time.deltaTime;
-                move = new Vector2(SpiralAmplitutdeX * Mathf.Sin(theta * SpiralSpeedX), SpiralAmplitutdeY * Mathf.Cos(theta * SpiralSpeedY));
-                transform.position = inital_position + move;
-                if (LightAccumulation > enemyAnimation.lightThreshold) Style = EnemyMovement.SpiralWait;
-                velocity = (move - move_last).normalized;
-                break;
-            case EnemyMovement.SpiralWait:
-                if (LightAccumulation <= 0) Style = EnemyMovement.Spiral;
+                switch (enemyState)
+                {
+                    case EnemyState.enemyStart:
+                        if ((transform.position - Player.position).magnitude < 20)
+                        {
+                            enemyState = EnemyState.enemyNormalBehaviour;
+                            enemyAudioSource.Play();
+                        }
+                        break;
+                    case EnemyState.enemyNormalBehaviour:
+                        theta += Time.deltaTime;
+                        move = new Vector2(SpiralAmplitutdeX * Mathf.Sin(theta * SpiralSpeedX), SpiralAmplitutdeY * Mathf.Cos(theta * SpiralSpeedY));
+                        transform.position = inital_position + move;
+                        if (LightAccumulation > enemyAnimation.lightThreshold) enemyState = EnemyState.enemyWait;
+                        velocity = (move - move_last).normalized;
+                        break;
+                    case EnemyState.enemyScared:
+                        if (LightAccumulation <= 0) enemyState = EnemyState.enemyGuard;
+                        break;
+                    case EnemyState.enemyGuard:
+                    case EnemyState.enemyWait:
+                        enemyState = EnemyState.enemyNormalBehaviour;
+                        break;
+                }
                 break;
         }
 
@@ -138,14 +160,10 @@ public class Enemy : MonoBehaviour
                 if ((transform.position - Player.position).magnitude < 3)
                 {
                     gameManager.Emotional(enemyType);
-                    switch(Style)
+                    switch(enemyState)
                     {
-                        case EnemyMovement.FollowPlayer:
-                            Style = EnemyMovement.RunFromPlayer;
-                            LightAccumulation = enemyAnimation.maxLight;
-                            break;
-                        case EnemyMovement.Spiral:
-                            Style = EnemyMovement.SpiralWait;
+                        case EnemyState.enemyNormalBehaviour:
+                            enemyState = EnemyState.enemyScared;
                             LightAccumulation = enemyAnimation.maxLight;
                             break;
                     }

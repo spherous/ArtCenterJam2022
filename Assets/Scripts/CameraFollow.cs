@@ -9,10 +9,16 @@ public class CameraFollow : MonoBehaviour
     private Vector3 offset;
     public float followSpeed;
     private float elapsedTime;
+    private float cycleStartTime;
     private void Awake()
     {
         offset = new Vector3 (0,0,-10);
         pos = transform;
+    }
+    
+    private void Start()
+    {
+        cycleStartTime = Time.time;
     }
     private void FixedUpdate()
     {
@@ -21,11 +27,11 @@ public class CameraFollow : MonoBehaviour
     
     void Follow()
     {
-       elapsedTime += Time.deltaTime;
-       transform.position = Vector3.Lerp(pos.position + offset, playerTransform.position + offset, elapsedTime / followSpeed);
+        elapsedTime = Time.time - cycleStartTime;
+        transform.position = Vector3.Lerp(pos.position + offset, playerTransform.position + offset, elapsedTime / followSpeed);
         {
             pos = transform;
-            elapsedTime = 0f;
+            cycleStartTime = Time.time;
         }
     }
 }

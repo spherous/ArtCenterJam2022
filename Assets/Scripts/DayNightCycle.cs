@@ -9,7 +9,7 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private Light2D globalLight;
     [SerializeField] private GameManager gameManager;
     public float cycleDuration;
-    private float elapsedDuration;
+    private float elapsedCycleDuration;
 
     private bool becomingDay = false;
 
@@ -17,6 +17,13 @@ public class DayNightCycle : MonoBehaviour
     public float midnightIntensity;
 
     public bool cycle = false;
+    private float cycleStartTime;
+    const float numberOfCycles = 2.0f;
+
+    private void Start()
+    {
+        cycleStartTime = Time.time;
+    }
 
     private void Update()
     {
@@ -26,25 +33,30 @@ public class DayNightCycle : MonoBehaviour
         if(gameManager != null && gameManager.gameOver)
             return;
 
-        elapsedDuration = Time.timeSinceLevelLoad;
+        elapsedCycleDuration = Time.time - cycleStartTime; //+= Time.deltaTime;
         float startVal = becomingDay ? midnightIntensity : duskDawnIntensity;
         float endVal = becomingDay ? duskDawnIntensity : midnightIntensity;
 
-        float t = elapsedDuration/cycleDuration;
+        float cyclePercent = getCyclePercent();
 
-        globalLight.intensity = Mathf.Clamp01(Mathf.Lerp(startVal, endVal, t));
-        onTimeChange?.Invoke(becomingDay ? t / 2 + 0.5f : t / 2);
+        globalLight.intensity = Mathf.Clamp01(Mathf.Lerp(startVal, endVal, cyclePercent));
+        onTimeChange?.Invoke(becomingDay ? (cyclePercent / numberOfCycles) + (1 / numberOfCycles) : (cyclePercent / numberOfCycles) );
 
-        if(globalLight.intensity == midnightIntensity && !becomingDay)
+        if(!becomingDay && (cyclePercent>=1.0f) )
         {
-            elapsedDuration = 0;
+            cycleStartTime = Time.time; // elapsedCycleDuration = 0;
             becomingDay = true;
         }
-        else if(globalLight.intensity == duskDawnIntensity && becomingDay)
+        else if( becomingDay && (cyclePercent >= 1.0f) )
         {
-            elapsedDuration = 0;
+            cycleStartTime = Time.time; // elapsedCycleDuration = 0;
             becomingDay = false;
             gameManager?.GameOver(EndGameStatus.Win);
         }        
+    }
+
+    public float getCyclePercent()
+    {
+        return elapsedCycleDuration / cycleDuration;
     }
 }

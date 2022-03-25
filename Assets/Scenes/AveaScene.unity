@@ -11669,7 +11669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalLight: {fileID: 662774177}
   gameManager: {fileID: 626010294}
-  cycleDuration: 10
+  cycleDuration: 126
   duskDawnIntensity: 0.33
   midnightIntensity: 0.005
   cycle: 1

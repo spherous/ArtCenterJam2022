@@ -2443,6 +2443,7 @@ MonoBehaviour:
   footstepAudio: {fileID: 1255246615}
   spriteRenderer: {fileID: 125577475}
   animationFPS: 0.25
+  backpedaling: 0
   nSpriteArray:
   - {fileID: -7882083370566787260, guid: e4f7606511a30304f8c5874db82c5420, type: 3}
   - {fileID: 21300000, guid: f59db7f45a2980349b20460b146cccfa, type: 3}
@@ -2491,6 +2492,46 @@ MonoBehaviour:
   - {fileID: 9029686863485488344, guid: 6788e30cdc2f2fe4aa5c3fc5e8bf94e2, type: 3}
   - {fileID: -6167987557773884241, guid: 6788e30cdc2f2fe4aa5c3fc5e8bf94e2, type: 3}
   - {fileID: 7519666989449035821, guid: 6788e30cdc2f2fe4aa5c3fc5e8bf94e2, type: 3}
+  nBPSpriteArray:
+  - {fileID: -3651487294169830436, guid: 12f155bcfc19f7542a41bc685f9becf8, type: 3}
+  - {fileID: -3997606669923341494, guid: 12f155bcfc19f7542a41bc685f9becf8, type: 3}
+  - {fileID: -1216921982876072923, guid: 12f155bcfc19f7542a41bc685f9becf8, type: 3}
+  - {fileID: 2010202645906750005, guid: 12f155bcfc19f7542a41bc685f9becf8, type: 3}
+  sBPSpriteArray:
+  - {fileID: 7867118660065112743, guid: 6ac51fa899840bc46aeb04f640517fcb, type: 3}
+  - {fileID: -8273778838935096151, guid: 6ac51fa899840bc46aeb04f640517fcb, type: 3}
+  - {fileID: 5348021945433369963, guid: 6ac51fa899840bc46aeb04f640517fcb, type: 3}
+  - {fileID: 5104246134201246354, guid: 6ac51fa899840bc46aeb04f640517fcb, type: 3}
+  eBPSpriteArray:
+  - {fileID: 3668388459250390460, guid: e3f7d038c34b05740bfd6d29fe2eb68e, type: 3}
+  - {fileID: 8909045691093747783, guid: e3f7d038c34b05740bfd6d29fe2eb68e, type: 3}
+  - {fileID: 9172999144867071338, guid: e3f7d038c34b05740bfd6d29fe2eb68e, type: 3}
+  - {fileID: 8027942256620795215, guid: e3f7d038c34b05740bfd6d29fe2eb68e, type: 3}
+  wBPSpriteArray:
+  - {fileID: -8039373508443784706, guid: 16d04b830cf7afb41bd628011e03ebae, type: 3}
+  - {fileID: -2271349025451233573, guid: 16d04b830cf7afb41bd628011e03ebae, type: 3}
+  - {fileID: 5344422598127321737, guid: 16d04b830cf7afb41bd628011e03ebae, type: 3}
+  - {fileID: -6306833418988805141, guid: 16d04b830cf7afb41bd628011e03ebae, type: 3}
+  neBPSpriteArray:
+  - {fileID: 5117108062734407631, guid: d5a1252ba7774c740ae8bd8875ebd604, type: 3}
+  - {fileID: 7143898043600546392, guid: d5a1252ba7774c740ae8bd8875ebd604, type: 3}
+  - {fileID: 2103361627347988178, guid: d5a1252ba7774c740ae8bd8875ebd604, type: 3}
+  - {fileID: -2062772409756534916, guid: d5a1252ba7774c740ae8bd8875ebd604, type: 3}
+  seBPSpriteArray:
+  - {fileID: -5783794552115311563, guid: 6f39be5ab4dc85247ad0e8f8295f7394, type: 3}
+  - {fileID: -138643556519152483, guid: 6f39be5ab4dc85247ad0e8f8295f7394, type: 3}
+  - {fileID: -6454774118862678267, guid: 6f39be5ab4dc85247ad0e8f8295f7394, type: 3}
+  - {fileID: 5659862766782461638, guid: 6f39be5ab4dc85247ad0e8f8295f7394, type: 3}
+  swBPSpriteArray:
+  - {fileID: -1722633622477583223, guid: 18c1d6a925a8f304b86607e0d20774f0, type: 3}
+  - {fileID: 5109528009224620481, guid: 18c1d6a925a8f304b86607e0d20774f0, type: 3}
+  - {fileID: -118439728091576811, guid: 18c1d6a925a8f304b86607e0d20774f0, type: 3}
+  - {fileID: 7670498872418668044, guid: 18c1d6a925a8f304b86607e0d20774f0, type: 3}
+  nwBPSpriteArray:
+  - {fileID: -3631413218716047865, guid: 1398f98c85416f4469d35c4d237beba0, type: 3}
+  - {fileID: 6163757875902110234, guid: 1398f98c85416f4469d35c4d237beba0, type: 3}
+  - {fileID: -3124397411865757693, guid: 1398f98c85416f4469d35c4d237beba0, type: 3}
+  - {fileID: 4096024758719357569, guid: 1398f98c85416f4469d35c4d237beba0, type: 3}
 --- !u!1001 &125880827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15496,6 +15537,7 @@ MonoBehaviour:
   dashCooldown: 1
   dashRate: 0.15
   dashSpeed: 7
+  backpedaling: 0
 --- !u!114 &860441664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15569,6 +15611,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ce72c3ab-3a43-47b8-900f-833940da569c
     m_ActionName: Keyboard/Mouse/Dash[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 860441663}
+        m_TargetAssemblyTypeName: MovementController, Assembly-CSharp
+        m_MethodName: BackPedal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ec67d190-33ec-461c-91e3-e1df7c77b56a
+    m_ActionName: Keyboard/Mouse/Backpedal[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Keyboard/Mouse

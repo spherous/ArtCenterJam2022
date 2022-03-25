@@ -19,9 +19,10 @@ public class MovementController : MonoBehaviour
     private float dashCooldownTimer;
     private bool dashed;
     public float dashSpeed;
-
+    public bool backpedaling;
     private void Awake()
     {
+        backpedaling = false;
         speedMax = maxSpeed;
         dashCooldownTimer = Time.timeSinceLevelLoad + dashCooldown;
         dashTime = Time.timeSinceLevelLoad + dashRate;
@@ -29,6 +30,7 @@ public class MovementController : MonoBehaviour
     }
     private void Update()
     {
+
         if(gameManager.gameOver)
             return;
 
@@ -37,7 +39,8 @@ public class MovementController : MonoBehaviour
             if (Time.timeSinceLevelLoad >= dashTime){ maxSpeed = speedMax;}
             if (Time.timeSinceLevelLoad >= dashCooldownTimer) { dashed = false; }
         }
-        float acceleration = maxSpeed / timeToMaxSpeed; 
+        float acceleration = maxSpeed / timeToMaxSpeed;
+
         if (horizontalInput > 0)
         {
             velocityX += acceleration * Time.deltaTime;
@@ -77,6 +80,8 @@ public class MovementController : MonoBehaviour
             }
 
         }
+
+
         velocityY = Mathf.Clamp(velocityY, -maxSpeed, maxSpeed);
         velocityX = Mathf.Clamp(velocityX, -maxSpeed, maxSpeed);
         rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rb.velocity.y, -maxSpeed, maxSpeed));
@@ -115,7 +120,23 @@ public class MovementController : MonoBehaviour
             dashTime = Time.timeSinceLevelLoad + dashRate;
         }
     }
-
+    
+    public void BackPedal(CallbackContext context)
+    {
+        if (gameManager.gameOver)
+            return;
+        if (context.started)
+        {
+            maxSpeed = maxSpeed / 2;
+            backpedaling = true;
+        }
+        if (context.canceled)
+        {
+            maxSpeed = speedMax;
+            backpedaling = false;
+            return;
+        }
+    }
     public void SetVelocityToZero() => rb.velocity = Vector2.zero;
 
 }

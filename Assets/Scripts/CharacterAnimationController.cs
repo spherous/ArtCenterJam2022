@@ -19,6 +19,7 @@ public class CharacterAnimationController : MonoBehaviour
     private bool waiting;
     private bool isAnimating;
     private bool started;
+    public bool backpedaling;
     public Sprite[] nSpriteArray;
     public Sprite[] sSpriteArray;
     public Sprite[] eSpriteArray;
@@ -27,6 +28,14 @@ public class CharacterAnimationController : MonoBehaviour
     public Sprite[] seSpriteArray;
     public Sprite[] swSpriteArray;
     public Sprite[] nwSpriteArray;
+    public Sprite[] nBPSpriteArray;
+    public Sprite[] sBPSpriteArray;
+    public Sprite[] eBPSpriteArray;
+    public Sprite[] wBPSpriteArray;
+    public Sprite[] neBPSpriteArray;
+    public Sprite[] seBPSpriteArray;
+    public Sprite[] swBPSpriteArray;
+    public Sprite[] nwBPSpriteArray;
 
     GameManager gameManager;
 
@@ -74,7 +83,10 @@ public class CharacterAnimationController : MonoBehaviour
         rotation = lightRotator.rotation.eulerAngles.z - 180;
         horizontalInput = movementController.horizontalInput;
         verticalInput = movementController.verticalInput;
+        backpedaling = movementController.backpedaling;
 
+        if (backpedaling) frameCount = 3;
+        else frameCount = 4;
         if (isAnimating)
         {
 
@@ -89,6 +101,7 @@ public class CharacterAnimationController : MonoBehaviour
                         frame = 1;
                         started = false;
                     }
+
                     else
                     {
                         waiting = true;
@@ -113,45 +126,88 @@ public class CharacterAnimationController : MonoBehaviour
     void updateSprite()
     {
 
-        if (verticalInput > 0 && horizontalInput > -0.5 && horizontalInput < 0.5)
+        if (verticalInput > 0 && horizontalInput > -0.5 && horizontalInput < 0.5 && !backpedaling)
         {
             spriteRenderer.sprite = nSpriteArray[frame];
             lrc.moveDir = 1;
         }
-        else if (verticalInput < 0 && horizontalInput > -0.5 && horizontalInput < 0.5)
+        else if (verticalInput < 0 && horizontalInput > -0.5 && horizontalInput < 0.5 && !backpedaling)
         {
             spriteRenderer.sprite = sSpriteArray[frame];
             lrc.moveDir = 5;
         }
-        else if (horizontalInput > 0 && verticalInput > -0.5 && verticalInput < 0.5)
+        else if (horizontalInput > 0 && verticalInput > -0.5 && verticalInput < 0.5 && !backpedaling)
         {
             spriteRenderer.sprite = eSpriteArray[frame];
             lrc.moveDir = 3;
         }
-        else if (horizontalInput < 0 && verticalInput > -0.5 && verticalInput < 0.5)
+        else if (horizontalInput < 0 && verticalInput > -0.5 && verticalInput < 0.5 && !backpedaling)
         {
             spriteRenderer.sprite = wSpriteArray[frame];
             lrc.moveDir = 7;
         }
-        else if (horizontalInput > 0 && verticalInput > 0)
+        else if (horizontalInput > 0 && verticalInput > 0 && !backpedaling)
         {
             spriteRenderer.sprite = neSpriteArray[frame];
             lrc.moveDir = 2;
         }
-        else if (horizontalInput > 0 && verticalInput < 0)
+        else if (horizontalInput > 0 && verticalInput < 0 && !backpedaling)
         {
             spriteRenderer.sprite = seSpriteArray[frame];
             lrc.moveDir = 4;
         }
-        else if (horizontalInput < 0 && verticalInput > 0)
+        else if (horizontalInput < 0 && verticalInput > 0 && !backpedaling)
         {
             spriteRenderer.sprite = nwSpriteArray[frame];
             lrc.moveDir = 8;
         }
-        else if (horizontalInput < 0 && verticalInput < 0)
+        else if (horizontalInput < 0 && verticalInput < 0 && !backpedaling)
         {
             spriteRenderer.sprite = swSpriteArray[frame];
             lrc.moveDir = 6;
+        }
+
+
+
+        if (verticalInput > 0 && horizontalInput > -0.5 && horizontalInput < 0.5 && backpedaling)
+        {
+            spriteRenderer.sprite = nBPSpriteArray[frame];
+            lrc.moveDir = 5;
+        }
+        else if (verticalInput < 0 && horizontalInput > -0.5 && horizontalInput < 0.5 && backpedaling)
+        {
+            spriteRenderer.sprite = sBPSpriteArray[frame];
+            lrc.moveDir = 1;
+        }
+        else if (horizontalInput > 0 && verticalInput > -0.5 && verticalInput < 0.5 && backpedaling)
+        {
+            spriteRenderer.sprite = eBPSpriteArray[frame];
+            lrc.moveDir = 7;
+        }
+        else if (horizontalInput < 0 && verticalInput > -0.5 && verticalInput < 0.5 && backpedaling)
+        {
+            spriteRenderer.sprite = wBPSpriteArray[frame];
+            lrc.moveDir = 3;
+        }
+        else if (horizontalInput > 0 && verticalInput > 0 && backpedaling)
+        {
+            spriteRenderer.sprite = neBPSpriteArray[frame];
+            lrc.moveDir = 6;
+        }
+        else if (horizontalInput > 0 && verticalInput < 0 && backpedaling)
+        {
+            spriteRenderer.sprite = seBPSpriteArray[frame];
+            lrc.moveDir = 8;
+        }
+        else if (horizontalInput < 0 && verticalInput > 0 && backpedaling)
+        {
+            spriteRenderer.sprite = nwBPSpriteArray[frame];
+            lrc.moveDir = 4;
+        }
+        else if (horizontalInput < 0 && verticalInput < 0 && backpedaling)
+        {
+            spriteRenderer.sprite = swBPSpriteArray[frame];
+            lrc.moveDir = 2;
         }
         timeCounter = Time.timeSinceLevelLoad + animationFPS;
         waiting = true;

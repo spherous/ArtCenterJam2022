@@ -195,10 +195,8 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Controls:
 
-    - WASD to move: SPACE to dash, SHIFT to backpedal
-
-    -
-    Mouse pointer to aim your lantern.'
+    - WASD to move: SPACE to dash, SHIFT to backpedal,  Mouse
+    pointer to aim your lantern.'
 --- !u!222 &136180145
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -158,7 +158,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 39.4}
-  m_SizeDelta: {x: 1900, y: 58.9}
+  m_SizeDelta: {x: 1900, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &136180144
 MonoBehaviour:
@@ -193,7 +193,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Use WASD to move and use your mouse pointer to aim your lantern.
+  m_Text: 'Controls:
+
+    - WASD to move: SPACE to dash, SHIFT to backpedal,  Mouse
+    pointer to aim your lantern.'
 --- !u!222 &136180145
 CanvasRenderer:
   m_ObjectHideFlags: 0

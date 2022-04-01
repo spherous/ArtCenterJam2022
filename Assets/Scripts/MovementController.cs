@@ -20,6 +20,8 @@ public class MovementController : MonoBehaviour
     private bool dashed;
     public float dashSpeed;
     public bool backpedaling;
+    private int hInput;
+    private int vInput;
     private void Awake()
     {
         backpedaling = false;
@@ -30,7 +32,6 @@ public class MovementController : MonoBehaviour
     }
     private void Update()
     {
-
         if(gameManager.gameOver)
             return;
 
@@ -40,47 +41,17 @@ public class MovementController : MonoBehaviour
             if (Time.timeSinceLevelLoad >= dashCooldownTimer) { dashed = false; }
         }
         float acceleration = maxSpeed / timeToMaxSpeed;
+        float h = acceleration * hInput;
+        float v = acceleration * vInput;
 
-        if (horizontalInput > 0)
-        {
-            velocityX += acceleration * Time.deltaTime;
-        }
-        else if (horizontalInput < 0)
-        {
-            velocityX += -acceleration * Time.deltaTime;
-        }
-        if (verticalInput > 0)
-        {
-            velocityY += acceleration * Time.deltaTime;
-        }
-        else if (verticalInput < 0)
-        {
-            velocityY += -acceleration * Time.deltaTime;
-        }
-        if (horizontalInput < 0.5 && horizontalInput > -0.5)
-        {
-            if (velocityX > 0)
-            {
-                velocityX -= Mathf.Clamp(acceleration * Time.deltaTime, 0, velocityX);
+        if(hInput != 0) velocityX += h * Time.deltaTime; 
+        else {
+            velocityX -= Mathf.Clamp(-acceleration * Time.deltaTime, velocityX, 0);
             }
-            else
-            {
-                velocityX -= Mathf.Clamp(-acceleration * Time.deltaTime, velocityX, 0);
+        if(vInput != 0) velocityY += v * Time.deltaTime;
+        else {
+            velocityY -= Mathf.Clamp(-acceleration * Time.deltaTime, velocityY, 0);
             }
-        }
-        if (verticalInput < 0.5 && verticalInput > -0.5)
-        {
-            if (velocityY > 0)
-            {
-                velocityY -= Mathf.Clamp(acceleration * Time.deltaTime, 0, velocityY);
-            }
-            else
-            {
-                velocityY -= Mathf.Clamp(-acceleration * Time.deltaTime, velocityY, 0);
-            }
-
-        }
-
 
         velocityY = Mathf.Clamp(velocityY, -maxSpeed, maxSpeed);
         velocityX = Mathf.Clamp(velocityX, -maxSpeed, maxSpeed);
@@ -98,12 +69,18 @@ public class MovementController : MonoBehaviour
         if(gameManager.gameOver)
             return;
         horizontalInput = context.ReadValue<float>();
+        if(horizontalInput > 0.5f) hInput=1;
+        else if(horizontalInput < -0.5) hInput=-1;
+        else hInput=0;
     }
     public void MoveVertical(CallbackContext context)
     {
         if(gameManager.gameOver)
             return;
         verticalInput = context.ReadValue<float>();
+        if(verticalInput > 0.5f) vInput=1;
+        else if(verticalInput < -0.5) vInput=-1;
+        else vInput=0;
     }
     public void Dash(CallbackContext context)
     {
